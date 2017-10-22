@@ -42,6 +42,8 @@ public:
     bool EstEgal(const Ensemble & unEns) const;
     crduEstInclus EstInclus(const Ensemble & unEns) const;
     crduAjouter Ajouter(int aAjouter);
+    unsigned int Ajuster (int);
+    bool Retirer(int element);
 
 
 //------------------------------------------------- Surcharge d'opérateurs

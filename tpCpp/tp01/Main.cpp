@@ -105,8 +105,8 @@ cout << e14.EstInclus(e12) << endl;
 //      ie : 0, 1, 1, 2, 2
 */
 
-//________________________________________________________________Test de Ajouter
-
+//_______________________________________________________________Test de Ajouter
+/*
 int tab0[0];
 int tab2[] = {0,1,2,3,4,5,6,7,8,9,10};
 
@@ -123,6 +123,42 @@ cout << e12.Ajouter(11) << endl;
 // Attendu : ajoute, ajoute, plein, deja, plein
 //      ie : 2, 2, 1, 0, 1
 // DEJA_PRESENT, PLEIN, AJOUTE
+*/
+
+//_______________________________________________________________Test de Ajuster
+/*
+int tab2[] = {0,1,2,3,4,5,6,7,8,9,10};
+
+Ensemble e40(0);
+Ensemble e41(10);
+Ensemble e42(tab2, 12);
+
+cout << e40.Ajuster(10) << endl;
+cout << e41.Ajuster(0) << endl;
+cout << e41.Ajuster(-2) << endl;
+cout << e41.Ajuster(5) << endl;
+cout << e42.Ajuster(0) << endl;
+cout << e42.Ajuster(-3) << endl;
+cout << e42.Ajuster(5) << endl;
+
+
+// Expected : 10, 10, 8, 13, 12, 11, 16
+*/
+//_______________________________________________________________Test de Retirer
+
+int tab2[] = {0,1,2,3,4,5,6,7,8,9,10};
+
+Ensemble e42(tab2, 12);
+Ensemble e41(10);
+
+e42.Afficher();
+cout << e42.Retirer(3) << endl;
+cout << e42.Retirer(13) << endl;
+e42.Afficher();
+
+e41.Afficher();
+cout << e41.Retirer(10) << endl;
+e41.Afficher();
 
 
 
