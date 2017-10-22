@@ -113,6 +113,74 @@ crduAjouter Ensemble::Ajouter(int aAjouter)
     return AJOUTE;
 }
 
+unsigned int Ensemble::Ajuster(int delta)
+{
+    if (delta > 0)
+    {
+        int * tmp = new int[this->cardMax + delta];
+        for (int i = 0; i < this->occupe; i++)
+        {
+            tmp[i] = this->values[i];
+        }
+        this->values = tmp;
+        this->cardMax = this->cardMax + delta;
+        return this->cardMax;
+    }
+    else if (delta < 0)
+    {
+        if (this->cardMax + delta <= this->occupe)
+        {
+            this->cardMax = this->occupe;
+            return this->cardMax;
+        }
+        else
+        {
+            this->cardMax += delta;
+            return this->cardMax;
+        }
+    }
+    return this->cardMax;
+}
+
+bool Ensemble::Retirer(int element)
+{
+    bool trouve;
+    /*int i = this->occupe / 2;________________Tentative de dichotomie
+    while (this->values[i] != element || )
+    {
+        if (this->values[i] == element)
+        {
+            trouve = true;
+        }
+        else if (this->values[i] <= element)
+        {
+            i = (i+this->occupe)
+        }
+    }*/
+    for (int i=0; i < this->occupe; i++)
+    {
+        if (this->values[i] == element)
+        {
+            for (int j=0; j < this->occupe-1; j++)
+            {
+                this->values[j] = this->values[j+1];
+            }
+            this->occupe--;
+            this->cardMax = this->occupe;
+            return true;
+        }
+        else if (this->values[i] > element)
+        {
+            this->cardMax = this->occupe;
+            return false;
+        }
+    }
+    this->cardMax = this->occupe;
+    return false;
+}
+
+
+
 //------------------------------------------------- Surcharge d'opérateurs
 Ensemble & Ensemble::operator = ( const Ensemble & unEnsemble )
 // Algorithme :
