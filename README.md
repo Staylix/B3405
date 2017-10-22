@@ -1,6 +1,5 @@
 # B3405
-Ce Git qui major !
 
-C'est très lourd !
+Pour l'instant il y a BinHeap et le projet Manzana
 
-Petit ajout via Vim
+Le config ne sert à rien
