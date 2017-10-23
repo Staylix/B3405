@@ -145,7 +145,7 @@ cout << e42.Ajuster(5) << endl;
 // Expected : 10, 10, 8, 13, 12, 11, 16
 */
 //_______________________________________________________________Test de Retirer
-
+/*
 int tab2[] = {0,1,2,3,4,5,6,7,8,9,10};
 
 Ensemble e42(tab2, 12);
@@ -159,6 +159,29 @@ e42.Afficher();
 e41.Afficher();
 cout << e41.Retirer(10) << endl;
 e41.Afficher();
+*/
+
+//______________________________________________________Test de Retirer multiple
+
+int tab2[] = {0,1,2,3,4,5,6,7,8,9,10};
+int tab3[] = {0,1,2,3,1,2,3,5,6,2,3,9,4,7,10,58,5,8,58};
+
+
+Ensemble e52(tab2, 12);
+Ensemble e51(10);
+Ensemble e53(tab3, 19);
+
+cout << e53.Retirer(e52) << endl;
+e53.Afficher();
+cout << e53.Retirer(e51) << endl;
+e53.Afficher();
+cout << e52.Retirer(e53) << endl;
+e52.Afficher();
+
+// Expected : 11, 0, 0
+
+
+
 
 
 

@@ -44,7 +44,7 @@ public:
     crduAjouter Ajouter(int aAjouter);
     unsigned int Ajuster (int);
     bool Retirer(int element);
-
+    unsigned int Retirer(const Ensemble & unEnsemble);
 
 //------------------------------------------------- Surcharge d'opérateurs
     Ensemble & operator = ( const Ensemble & unEnsemble );
