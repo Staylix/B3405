@@ -179,6 +179,34 @@ bool Ensemble::Retirer(int element)
     return false;
 }
 
+unsigned int Ensemble::Retirer(const Ensemble & unEnsemble)
+{
+    int retire = 0;
+    tri(unEnsemble.values, unEnsemble.occupe); // Inutile ?
+    int i = 0;
+    for (int j=0; j < unEnsemble.occupe; j++)
+    {
+        while (this->values[i] < unEnsemble.values[j])
+        {
+            if (i == this->occupe-1)
+            {
+                break;
+            }
+            i++;
+        }
+        if (this->values[i] == unEnsemble.values[j])
+        {
+            for (int k=0; k < this->occupe-1; k++)
+            {
+                this->values[k] = this->values[k+1];
+            }
+            this->occupe--;
+            retire++;
+        }
+    }
+    return retire;
+}
+
 
 
 //------------------------------------------------- Surcharge d'opérateurs
