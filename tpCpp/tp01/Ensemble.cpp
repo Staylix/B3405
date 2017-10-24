@@ -63,8 +63,8 @@ bool Ensemble::EstEgal(const Ensemble & e2) const
     }
     return true;
 }
-
 crduEstInclus Ensemble::EstInclus(const Ensemble & e2) const
+
 {
     if (this->EstEgal(e2))
     {
@@ -96,17 +96,20 @@ crduEstInclus Ensemble::EstInclus(const Ensemble & e2) const
 
 crduAjouter Ensemble::Ajouter(int aAjouter)
 {
-    if (this->cardMax == this->occupe)
+    
+	for (int i=0; i < this->occupe; i++)
     {
-        for (int i=0; i < this->cardMax; i++)
-        {
             if (this->values[i] == aAjouter)
             {
                 return DEJA_PRESENT;
             }
-        }
+    }
+	
+	if (this->cardMax == this->occupe)
+    {
         return PLEIN;
     }
+	
     this->values[this->occupe] = aAjouter;
     this->occupe++;
     tri(this->values, this->occupe);
@@ -122,6 +125,7 @@ unsigned int Ensemble::Ajuster(int delta)
         {
             tmp[i] = this->values[i];
         }
+		delete [] this->values;
         this->values = tmp;
         this->cardMax = this->cardMax + delta;
         return this->cardMax;
@@ -161,7 +165,7 @@ bool Ensemble::Retirer(int element)
     {
         if (this->values[i] == element)
         {
-            for (int j=0; j < this->occupe-1; j++)
+            for (int j=i; j < this->occupe-1; j++)
             {
                 this->values[j] = this->values[j+1];
             }
@@ -214,6 +218,7 @@ Ensemble & Ensemble::operator = ( const Ensemble & unEnsemble )
 // Algorithme :
 //
 {
+	
 } //----- Fin de operator =
 
 
