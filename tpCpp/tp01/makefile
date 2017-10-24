@@ -4,16 +4,16 @@ COMP = @g++
 LINKER = @g++
 RMFLAGS = -f
 ECHOFLAGS = 
-COMPFLAGS = -g 
+COMPFLAGS =
 EDLFLAGS =
 DIRHEADERS = ./
-HEADERS = SClasse.h
-REAL = SClasse.cpp Main.cpp
+HEADERS = Ensemble.cpp
+REAL = $(HEADERS:.h=.cpp) Main.cpp
 OBJ = $(REAL:.cpp=.o)
 EXE = a.out
 LIBS =
 CLEAN = clean
-OUTPUT = build/
+OUTPUT = 
 
 
 PHONY = $(CLEAN)
@@ -28,4 +28,5 @@ $(EXE): $(OBJ)
 
 $(CLEAN):
 	$(RM) $(RMFLAGS) $(EXE) $(OBJ) core
+	$(ECHO) "Repertory cleaned !"
 
