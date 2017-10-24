@@ -20,13 +20,13 @@ PHONY = $(CLEAN)
 
 $(EXE): $(OBJ)
 	$(ECHO) "Linker de $(OBJ)"
-	$(LINKER) -o $(EXE) $(OUTPUT)$(OBJ) $(LIBS)
+	$(LINKER) -o $(EXE) $(OBJ) $(LIBS)
 
 %.o: %.cpp
 	$(ECHO) "Compilation de <$<>"
 	$(COMP) $(COMPFLAGS) -c -I $(DIRHEADERS) -o $(OUTPUT)$@ $<
 
 $(CLEAN):
-	$(RM) $(RMFLAGS) $(EXE) $(OBJ) core
+	$(RM) $(RMFLAGS) $(EXE) $(OUTPUT)*.o core
 	$(ECHO) "Repertory cleaned !"
 
