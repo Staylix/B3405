@@ -17,7 +17,7 @@
 
 //------------------------------------------------------------------ Types
 
-enum crduEstInclus { INCLUSION_LARGE, INCLUSION_STRICTE, NON_INCLUSION };
+enum crduEstInclus { NON_INCLUSION, INCLUSION_LARGE, INCLUSION_STRICTE };
 enum crduAjouter { DEJA_PRESENT, PLEIN, AJOUTE };
 
 //------------------------------------------------------------------------
