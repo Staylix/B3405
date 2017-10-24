@@ -149,7 +149,7 @@ bool Ensemble::Retirer(int element)
     {
         if (this->values[i] == element)
         {
-            for (int j=0; j < this->occupe-1; j++)
+            for (int j=i; j < this->occupe-1; j++)
             {
                 this->values[j] = this->values[j+1];
             }
