@@ -169,6 +169,12 @@ bool Ensemble::Retirer(int element)
 
 unsigned int Ensemble::Retirer(const Ensemble & unEnsemble)
 {
+  if (this == &unEnsemble)
+  {
+    int tmp = this->occupe;
+    this->occupe = 0;
+    return tmp;
+  }
   int s_init = this->cardMax;
   int i;
   int count = 0;
@@ -181,30 +187,45 @@ unsigned int Ensemble::Retirer(const Ensemble & unEnsemble)
   }
   this->cardMax = s_init;
   return count;
-    /*int retire = 0;
-    tri(unEnsemble.values, unEnsemble.occupe); // Inutile ?
-    int i = 0;
-    for (int j=0; j < unEnsemble.occupe; j++)
-    {
-        while (this->values[i] < unEnsemble.values[j])
-        {
-            if (i == this->occupe-1)
-            {
-                break;
-            }
-            i++;
-        }
-        if (this->values[i] == unEnsemble.values[j])
-        {
-            for (int k=0; k < this->occupe-1; k++)
-            {
-                this->values[k] = this->values[k+1];
-            }
-            this->occupe--;
-            retire++;
-        }
+}
+
+int Ensemble::Reunir(const Ensemble & unEnsemble)
+{
+  crduEstInclus inclus = this->EstInclus(unEnsemble);
+  if (inclus != NON_INCLUSION || this == &unEnsemble)
+    return 0;
+
+  bool reajust = false;
+  int ajoutes = 0;
+  int i;
+  int j;
+
+  for(i=0; i<unEnsemble.occupe; i++) {
+    bool trouve = false;
+    for(j=0; j<this->occupe && trouve == false; j++) {
+      if (unEnsemble.values[i] == this->values[j])
+        trouve = true;
     }
-    return retire;*/
+    if(!trouve)
+    {
+      ajoutes++;
+      if(this->occupe < this->cardMax) {
+        this->values[this->occupe] = unEnsemble.values[i];
+        this->occupe++;
+      }
+      else if(this->occupe == this->cardMax) { //----reajustement
+        reajust = true;
+        this->Ajuster(1);
+        this->values[occupe] = unEnsemble.values[i];
+        this->occupe++;
+      }
+    }
+  }
+  if (ajoutes)
+    tri(this->values, this->occupe);
+  if (reajust)
+    return -1;
+  return ajoutes;
 }
 
 

@@ -163,7 +163,7 @@ e41.Afficher();
 
 //______________________________________________________Test de Retirer multiple
 
-int tab2[] = {0,1,2,3,4,5,6,7,8,9,10};
+/*int tab2[] = {0,1,2,3,4,5,6,7,8,9,10};
 int tab3[] = {0,1,2,3,1,2,3,5,6,2,3,9,4,7,10,58,5,8,58};
 
 
@@ -179,8 +179,58 @@ cout << e52.Retirer(e53) << endl;
 e52.Afficher();
 
 // Expected : 11, 0, 0
+*/
 
+//______________________________________________________Test de Reunir
+  int tabVide[0];
+  int tab0[4] = {3, 4};
+  int tab1[10] = {1, 5, 0};
+  int tab2[] = {3, 4, 5,6,7,8, 3, 4};
 
+  Ensemble vide(tabVide, 0);
+  Ensemble videCop(tabVide, 0);
+  Ensemble e0(tab0, 4);
+  Ensemble e0cop(tab0, 4);
+  Ensemble e1(tab1, 10);
+  Ensemble e1cop(tab1, 10);
+  Ensemble e2(tab2, 8);
+  Ensemble e2cop(tab2, 8);
+  Ensemble e13(tab2, 17);
+  
+/*---element identique
+  cout << vide.Reunir(vide) << endl;
+  vide.Afficher();
+  cout << e0.Reunir(e0) << endl;
+  e0.Afficher();
+  cout << e2.Reunir(e2) << endl;
+  e2.Afficher();
+//---------OK*/
+
+/*---Ensembles inclus
+  cout << e0.Reunir(vide) << endl;
+  e0.Afficher();
+  cout << e1.Reunir(e0) << endl; //e1 inclus e0
+  e1.Afficher();//----OK*/
+
+/*---Ensemble vide
+  cout << vide.Reunir(e0) << endl; // expected -1
+  vide.Afficher(); //expected {1 5}
+  cout << e0.Reunir(videCop) << endl; // expected 0
+  e0.Afficher(); //expected {1 5}----OK*/
+
+/*---Ensemble sans intersection
+  cout << e0.Reunir(e1) << endl; //expected -1
+  e0.Afficher(); //expected 0 1 3 4 5
+  cout << e1.Reunir(e0cop) << endl; //expected 2
+  e1.Afficher(); //expected 0 1 3 4 5 ---OK*/
+
+//--Ensemble avec intersection
+  e0.Afficher();
+  e2.Afficher();
+  cout << e0.Reunir(e2) << endl; //expected beaucoup
+  cout << e2.Reunir(e1) << endl; //expected 1
+  e0.Afficher();
+  e2.Afficher();//   */
 
 
 
