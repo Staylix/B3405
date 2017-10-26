@@ -224,7 +224,7 @@ int Ensemble::Reunir(const Ensemble & unEnsemble)
   if (ajoutes)
     tri(this->values, this->occupe);
   if (reajust)
-    return -1;
+    return -ajoutes;
   return ajoutes;
 }
 
