@@ -228,6 +228,27 @@ int Ensemble::Reunir(const Ensemble & unEnsemble)
   return ajoutes;
 }
 
+unsigned int Ensemble::Intersection ( const Ensemble & unEnsemble )
+{
+  if(this == &unEnsemble)
+    return 0;
+  int count = 0;
+  int *newValues = new int[this->occupe];
+  for(int i = 0; i<this->occupe; i++) {
+    for (int j=0; j<unEnsemble.occupe; j++) {
+      if (this->values[i] == unEnsemble.values[j])
+        newValues[count++] = unEnsemble.values[j];
+    }
+  }
+  int tmp = this->occupe - count;
+  this->values = newValues;
+  this->cardMax = count;
+  this->occupe = count;
+
+  return tmp;
+
+}
+
 
 
 //------------------------------------------------- Surcharge d'opérateurs

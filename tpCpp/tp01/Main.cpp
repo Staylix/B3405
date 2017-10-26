@@ -182,11 +182,10 @@ e52.Afficher();
 */
 
 //______________________________________________________Test de Reunir
-  int tabVide[0];
+  /*int tabVide[0];
   int tab0[4] = {3, 4};
   int tab1[10] = {1, 5, 0};
   int tab2[] = {3, 4, 5,6,7,8, 3, 4};
-
   Ensemble vide(tabVide, 0);
   Ensemble videCop(tabVide, 0);
   Ensemble e0(tab0, 4);
@@ -195,7 +194,7 @@ e52.Afficher();
   Ensemble e1cop(tab1, 10);
   Ensemble e2(tab2, 8);
   Ensemble e2cop(tab2, 8);
-  Ensemble e13(tab2, 17);
+  Ensemble e13(tab2, 17);*/
   
 /*---element identique
   cout << vide.Reunir(vide) << endl;
@@ -224,13 +223,44 @@ e52.Afficher();
   cout << e1.Reunir(e0cop) << endl; //expected 2
   e1.Afficher(); //expected 0 1 3 4 5 ---OK*/
 
-//--Ensemble avec intersection
+/*--Ensemble avec intersection
   e0.Afficher();
   e2.Afficher();
   cout << e0.Reunir(e2) << endl; //expected beaucoup
   cout << e2.Reunir(e1) << endl; //expected 1
   e0.Afficher();
   e2.Afficher();//   */
+
+
+//______________________________________________________Test de Intersection
+
+  int tabVide[0];
+  int tab0[4] = {3, 4};
+  int tab1[10] = {1, 5, 0};
+  int tab2[] = {3, 4, 5,6,7,8, 3, 4, 99};
+  Ensemble vide(tabVide, 0);
+  Ensemble videCop(tabVide, 0);
+  Ensemble e0(tab0, 4);
+  Ensemble e0cop(tab0, 4);
+  Ensemble e1(tab1, 10);
+  Ensemble e1cop(tab1, 10);
+  Ensemble e2(tab2, 10);
+  Ensemble e2cop(tab2, 10);
+  Ensemble e13(tab2, 17);
+  
+  cout << "expected 0" << endl;
+  cout << vide.Intersection(vide) << endl;
+  cout << vide.Intersection(e0) << endl;
+  cout << e0.Intersection(e0) << endl;
+  //e0.Afficher();
+  vide.Afficher();
+
+  cout << "expected not 0" << endl;
+  cout << e0.Intersection(vide) << endl;
+  cout << e0cop.Intersection(e2) << endl;
+  cout << e1.Intersection(e2) << endl;
+  cout << e2.Intersection(e1cop) << endl;
+  e2.Afficher();
 
 
 
