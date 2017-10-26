@@ -240,10 +240,14 @@ unsigned int Ensemble::Intersection ( const Ensemble & unEnsemble )
         newValues[count++] = unEnsemble.values[j];
     }
   }
-  int tmp = this->occupe - count;
+  int tmp = this->occupe - count; //taille de base - taille intersection = nb d'element deleted non ?
   this->values = newValues;
   this->cardMax = count;
   this->occupe = count;
+  tri(this->values, this->occupe);
+
+  if(tmp<0)
+    tmp = 0;
 
   return tmp;
 
