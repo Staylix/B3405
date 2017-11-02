@@ -96,17 +96,15 @@ crduEstInclus Ensemble::EstInclus(const Ensemble & e2) const
 
 crduAjouter Ensemble::Ajouter(int aAjouter)
 {
-    if (this->cardMax == this->occupe)
+    for (int i=0; i < this->cardMax; i++)
     {
-        for (int i=0; i < this->cardMax; i++)
+        if (this->values[i] == aAjouter)
         {
-            if (this->values[i] == aAjouter)
-            {
-                return DEJA_PRESENT;
-            }
+            return DEJA_PRESENT;
         }
-        return PLEIN;
     }
+    if (this->cardMax == this->occupe)
+        return PLEIN;
     this->values[this->occupe] = aAjouter;
     this->occupe++;
     tri(this->values, this->occupe);
@@ -230,8 +228,8 @@ int Ensemble::Reunir(const Ensemble & unEnsemble)
 
 unsigned int Ensemble::Intersection ( const Ensemble & unEnsemble )
 {
-  if(this == &unEnsemble)
-    return 0;
+  //if(this == &unEnsemble)
+  //  return 0;
   int count = 0;
   int *newValues = new int[this->occupe];
   for(int i = 0; i<this->occupe; i++) {
