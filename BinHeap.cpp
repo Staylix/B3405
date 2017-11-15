@@ -7,6 +7,8 @@
 #define RIGHT(i) (2*(i)+2)
 #define PARENT(i) ((i)-1)/2
 
+#define _CRT_SECURE_NO_WARNINGS
+
 
 typedef struct
 {
@@ -43,24 +45,43 @@ void real(BinaryHeap * heap);
 
 int main(void)
 {
-    char lecture[100];
+    char lecture[101];
     int val;
     BinaryHeap * heap;
-    heap = Init(2);
+    heap = Init(10);
     
-    
-    /*InsertValue(heap, 72);
-    InsertValue(heap, 50);
-    InsertValue(heap, 20);
+    /*
+    InsertValue(heap, 72);
+	InsertValue(heap, 7);
+	InsertValue(heap, 5);
+	InsertValue(heap, 50);
+	InsertValue(heap, 100);
+	InsertValue(heap, 20);
     InsertValue(heap, 80);
-    InsertValue(heap, 100);
     InsertValue(heap, 8);
-    InsertValue(heap, 7);
-    InsertValue(heap, 5);
     InsertValue(heap, 11);
-    printf("\n");               //Facilite le test
+	InsertValue(heap, 72);
+	InsertValue(heap, 7);
+	InsertValue(heap, 5);
+	InsertValue(heap, 50);
+	InsertValue(heap, 100);
+	InsertValue(heap, 20);
+	InsertValue(heap, 80);
+	InsertValue(heap, 8);
+	printf("\n");
+	InsertValue(heap, 13);
+	InsertValue(heap, 73);
+	InsertValue(heap, 63);
+	InsertValue(heap, 6);
+	InsertValue(heap, 51);
+	InsertValue(heap, 101);
+	InsertValue(heap, 21);
+	InsertValue(heap, 81);
+	InsertValue(heap, 9);
+	InsertValue(heap, 12);*/
+            //Facilite le test
+	
 
-*/
     scanf("%99s", lecture);
     while (strcmp(lecture, "bye") != 0)
     {
@@ -118,6 +139,7 @@ BinaryHeap * Init(int size)
 
 
 
+
 void swap(int *array, int a, int b)
 {
     int tmp = array[a];
@@ -126,19 +148,19 @@ void swap(int *array, int a, int b)
 }
 
 
-void heapify(int *array, int n, int i)
+void heapify(int *array, int n, int i) // n = filled, i = 0
 {
     if (LEFT(i) >= n) return;
 
     if (RIGHT(i) < n)
     {
-        if (array[LEFT(i)] > array[i] && array[LEFT(i)] > array[RIGHT(i)])
+        if (array[LEFT(i)] > array[i] && array[LEFT(i)] >= array[RIGHT(i)])
         {
             swap(array, i, LEFT(i));
             heapify(array, n, LEFT(i));
             return;
         }
-        else if (array[RIGHT(i)] > array[i] && array[RIGHT(i)] > array[LEFT(i)])
+        else if (array[RIGHT(i)] > array[i] && array[RIGHT(i)] >= array[LEFT(i)])
         {
             swap(array, i, RIGHT(i));
             heapify(array, n, RIGHT(i));
@@ -174,8 +196,8 @@ void InsertValue(BinaryHeap * heap, int value)
         i = PARENT(i);
     }
     heap->filled++;
-    //printf("%d\t%d\t", heap->allocated, heap->filled);
 
+    //printf("%d\t%d\t", heap->allocated, heap->filled);
     //for (i = 0; i < heap->filled; i++) printf("%d ", heap->array[i]);
 }
 
