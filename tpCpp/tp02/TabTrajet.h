@@ -44,5 +44,13 @@ public:
     TabTrajet();
     virtual ~TabTrajet();
 
+protected:
+    int max;
+    int utilise;
+    Trajet** listTrajet;
+    
+private:
+    void realloc ();
+
 };
 #endif // TabTrajet_H
