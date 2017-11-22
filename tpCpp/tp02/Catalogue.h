@@ -34,7 +34,7 @@ class Catalogue {
 //
 public:
 
-    void AjouterTrajet();
+    void AjouterTrajet(const Trajet * T);
     // Contrat :
     //      Lis l'entrée standard
     //      Cree l'objet adequat: TrajetSimple ou TrajetCompose
@@ -44,15 +44,23 @@ public:
     // Mode d'emploi :
     //      Affiche le catalogue des Trajets
 
-    void Rechercher() const;
+    void RechercherSimple(char *, char *) const;
     // Mode d'emploi :
     //      Lis l'entrée standard pour récupérer la ville de départ et celle d'arrivée
     //      Affiche les parcours correspondant à la demande utilisateur si possible
-
+    
+    void RechercherAvancee(char *, char *) const;
+    // Mode d'emploi :
+    //      Lis l'entrée standard pour récupérer la ville de départ et celle d'arrivée
+    //      Affiche les parcours correspondant multiples à la demande utilisateur si possible
+    
 //---------------------------------------------------- Constructor and Desctructor
 
     Catalogue();
     virtual ~Catalogue();
+
+protected:
+    TabTrajet catalog;
 
 };
 #endif // Catalogue_H
