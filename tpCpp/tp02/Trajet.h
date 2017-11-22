@@ -35,6 +35,8 @@ class Trajet {
 //
 
 public:
+    
+    virtual ~Trajet() {};
 
     virtual char * getDepart() const = 0;
     virtual char * getArrivee() const = 0;

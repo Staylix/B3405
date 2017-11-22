@@ -36,7 +36,14 @@ class TrajetSimple : public Trajet {
 
     TrajetSimple(char * dep, char * arrivee, char * mt);
     virtual ~TrajetSimple ();
+    virtual char * getDepart() const;
+    virtual char * getArrivee() const;
+    virtual void Afficher() const;
 
+    protected:
+      char * depart;
+      char * arrivee;
+      char * moyen;
 
 };
 #endif // TrajetSimple_H
