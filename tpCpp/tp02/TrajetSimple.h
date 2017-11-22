@@ -34,7 +34,7 @@ class TrajetSimple : public Trajet {
 //
 //---------------------------------------------------- Constructor and Destructor
 
-    TrajetSimple(char * dep = "Saint-Egreve", char * arrivee = "Grenoble", char * mt = "Hyppogriffe");
+    TrajetSimple(char * dep, char * arrivee, char * mt);
     virtual ~TrajetSimple ();
 
 
