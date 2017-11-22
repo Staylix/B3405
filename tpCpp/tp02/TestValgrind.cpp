@@ -14,7 +14,7 @@ int main(int argc, char *argv[])
     const Trajet* t2 = new const TrajetSimple ((char *)"A", (char *)"B", (char *)"C");
     t2->Afficher();
     
-    const Trajet* tt = new const TabTrajet ();
+//    const Trajet* tt = new const TabTrajet ();
 
     if (true) {
         TabTrajet tt;

@@ -4,11 +4,8 @@ COMP = @g++
 LINKER = @g++
 RMFLAGS = -f
 ECHOFLAGS = 
-COMPFLAGS = -ansi -pedantic -Wall -std=c++11
-EDLFLAGS =
-DIRHEADERS =
-HEADERS = $(wildcard *.h)
-REAL = $(HEADERS:.h=.cpp) Main.cpp
+COMPFLAGS = -ansi -pedantic -Wall -std=c++11 -D MAP
+REAL = $(wildcard *.cpp)
 OBJ = $(REAL:.cpp=.o)
 EXE = a.out
 LIBS =
