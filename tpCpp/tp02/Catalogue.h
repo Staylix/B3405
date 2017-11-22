@@ -19,7 +19,8 @@
 
 /////////////////////////////////////////////////////////////////  INCLUDE
 //--------------------------------------------------- Interfaces utilisées
-
+#include "Trajet.h"
+#include "TabTrajet.h"
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -60,7 +61,7 @@ public:
     virtual ~Catalogue();
 
 protected:
-    TabTrajet catalog;
+    TabTrajet * catalog;
 
 };
 #endif // Catalogue_H

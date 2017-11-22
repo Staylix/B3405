@@ -24,25 +24,25 @@ using namespace std;
 //----------------------------------------------------- Méthodes publiques
 
 
-void Afficher() const
+void Catalogue::Afficher() const
 {
-    for (unsigned int i = 0; i < catalog.GetUtilise(); i++)
+    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
-        catalog.Get(i).Afficher();
+        catalog->Get(i)->Afficher();
     }
 }
 
-void AjouterTrajet(const Trajet * T)
+void Catalogue::AjouterTrajet(const Trajet * T)
 {
-    catalog.Add(T);
+    catalog->Add(T);
 }
 
-void RechercherSimple(char * depart, char * arrivee) const      // TODO
+void Catalogue::RechercherSimple(char * depart, char * arrivee) const      // TODO
 {
 
 }
 
-void RechercherAvancee(char * depart, char * arrivee) const     // TODO
+void Catalogue::RechercherAvancee(char * depart, char * arrivee) const     // TODO
 {
 
 }

@@ -43,7 +43,7 @@ public:
     // Mode d'emploi :
     //      Renvoi l'objet positionné à la i-ème case du tableau
 
-    unsigned int GetUtilise();
+    unsigned int GetUtilise() const;
 
     TabTrajet ( const TabTrajet & unTabTrajet );            // Constructeur de copie
     TabTrajet();                                            // Constructeur

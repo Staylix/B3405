@@ -48,7 +48,7 @@ using namespace std;
         return this->listTrajet[i];
     }
     
-    unsigned int TabTrajet::GetUtilise()
+    unsigned int TabTrajet::GetUtilise() const
     {
         return this->utilise;
     }

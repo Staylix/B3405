@@ -5,10 +5,9 @@
 #include "Catalogue.h"
 
 
-int main(int argc, char *argv[])
+int main()
 {
-/*
-    const TrajetSimple t1 ((char *)"Saint Egreve", (char *)"Grenoble", (char *)"Hypogriffe");
+    /*const TrajetSimple t1 ((char *)"Saint Egreve", (char *)"Grenoble", (char *)"Hypogriffe");
     t1.Afficher();
 
     const Trajet* t2 = new const TrajetSimple ((char *)"A", (char *)"B", (char *)"C");
@@ -27,6 +26,7 @@ int main(int argc, char *argv[])
     
     
     delete t2;
-*/
+    */
     return 0;
 }
+
