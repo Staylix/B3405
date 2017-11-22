@@ -37,7 +37,7 @@ public:
 
     void Add ( const Trajet * t );
     // Mode d'emploi :
-    //      Ajoute à la fin du tableau la référence de l'élément passé en paramètre
+    //      Ajoute à la fin du tableau le pointeur de l'élément passé en paramètre
 
     const Trajet * Get ( unsigned int i ) const;
     // Mode d'emploi :

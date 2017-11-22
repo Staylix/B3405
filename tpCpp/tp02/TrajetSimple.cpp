@@ -11,6 +11,9 @@ using namespace std;
  ******************/
 
 char * TrajetSimple::getDepart() const {
+#if MAP
+  cout << "getDepart de TrajetSimple" << endl;
+#endif
   return depart;
 }
 
@@ -35,21 +38,21 @@ TrajetSimple::TrajetSimple (char *dep, char * arr, char * mt)
   arrivee = new char[strlen(arr)+1];
   moyen = new char[strlen(mt)+1];
 
-  if(depart == NULL || arr == NULL || moyen == NULL)
+  if(depart == NULL || arrivee == NULL || moyen == NULL)
   {
     cerr << "Erreur lors de l'alloc des attrib d'un new TrajetSimple" << endl;
   }
 
   strcpy(depart, dep);
-  strcpy(arr ,arrivee);
-  strcpy(mt, moyen);
+  strcpy(arrivee ,arr);
+  strcpy(moyen, mt);
 }
 
 TrajetSimple::~TrajetSimple () {
 #if MAP
   cout << "Appel au destructeur de TrajetSimple" << endl;
 #endif
-  delete depart;
-  delete arrivee;
-  delete moyen;
+  delete [] depart;
+  delete [] arrivee;
+  delete [] moyen;
 }

@@ -8,7 +8,7 @@ COMPFLAGS = -ansi -pedantic -Wall -std=c++11
 EDLFLAGS =
 DIRHEADERS =
 HEADERS = $(wildcard *.h)
-REAL = $(HEADERS:.h=.cpp) main.c
+REAL = $(HEADERS:.h=.cpp) Main.cpp
 OBJ = $(REAL:.cpp=.o)
 EXE = a.out
 LIBS =
