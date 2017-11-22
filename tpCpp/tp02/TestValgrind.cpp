@@ -7,7 +7,7 @@
 
 int main(int argc, char *argv[])
 {
-
+/*
     const TrajetSimple t1 ((char *)"Saint Egreve", (char *)"Grenoble", (char *)"Hypogriffe");
     t1.Afficher();
 
@@ -27,6 +27,6 @@ int main(int argc, char *argv[])
     
     
     delete t2;
-
+*/
     return 0;
 }
