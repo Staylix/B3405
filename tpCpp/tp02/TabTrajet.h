@@ -19,6 +19,8 @@
 /////////////////////////////////////////////////////////////////  INCLUDE
 //--------------------------------------------------- Interfaces utilisées
 
+#include "Trajet.h"
+
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
@@ -33,21 +35,24 @@ class TabTrajet {
 //
 public:
 
-    void add ( const Trajet & t );
+    void Add ( const Trajet * t );
     // Mode d'emploi :
     //      Ajoute à la fin du tableau la référence de l'élément passé en paramètre
 
-    Trajet & get ( unsigned int i ) const;
+    const Trajet * Get ( unsigned int i ) const;
     // Mode d'emploi :
     //      Renvoi l'objet positionné à la i-ème case du tableau
 
-    TabTrajet();
+    unsigned int GetUtilise();
+
+    TabTrajet ( const TabTrajet & unTabTrajet );            // Constructeur de copie
+    TabTrajet();                                            // Constructeur
     virtual ~TabTrajet();
 
 protected:
-    int max;
-    int utilise;
-    Trajet** listTrajet;
+    unsigned int max;
+    unsigned int utilise;
+    const Trajet** listTrajet;
     
 private:
     void realloc ();

@@ -28,31 +28,30 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-    void TabTrajet::add ( const Trajet & t )
+    void TabTrajet::Add ( const Trajet * t )
     {
         if (this->max <= this->utilise)
         {
-            realloc(this);
+            this->realloc();
         }
         this->listTrajet[this->utilise] = t;
-        this->utilise++;
+        
         return;
     }
-
-    void TabTrajet::realloc()
+    
+    const Trajet * TabTrajet::Get ( unsigned int i ) const
     {
-
-        Trajet** newList = new (Trajet*)[this->max*2];
-        
-        this->max = this->max * 2;
+        if (i >= this->utilise)
+        {
+            return nullptr;
+        }
+        return this->listTrajet[i];
     }
-
-//------------------------------------------------- Surcharge d'opérateurs
-TabTrajet & TabTrajet::operator = ( const TabTrajet & unTabTrajet )
-// Algorithme :
-//
-{
-} //----- Fin de operator =
+    
+    unsigned int TabTrajet::GetUtilise()
+    {
+        return this->utilise;
+    }
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -63,6 +62,13 @@ TabTrajet::TabTrajet ( const TabTrajet & unTabTrajet )
 #ifdef MAP
     cout << "Appel au constructeur de copie de <TabTrajet>" << endl;
 #endif
+    max = unTabTrajet.max;
+    utilise = unTabTrajet.utilise;
+    listTrajet = new const Trajet*[max];
+    for (unsigned int i = 0; i < utilise; i++)
+    {
+        listTrajet[i] = unTabTrajet.listTrajet[i];
+    }
 } //----- Fin de TabTrajet (constructeur de copie)
 
 
@@ -73,6 +79,9 @@ TabTrajet::TabTrajet ( )
 #ifdef MAP
     cout << "Appel au constructeur de <TabTrajet>" << endl;
 #endif
+    max = 5;
+    utilise = 0;
+    listTrajet = new const Trajet*[max];
 } //----- Fin de TabTrajet
 
 
@@ -83,11 +92,28 @@ TabTrajet::~TabTrajet ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TabTrajet>" << endl;
 #endif
+    for (unsigned int i = 0; i < utilise; i++)
+    {
+        delete listTrajet[i];
+    }
     delete [] listTrajet;
 } //----- Fin de ~TabTrajet
 
 
 //------------------------------------------------------------------ PRIVE
+
+    void TabTrajet::realloc()
+    {
+        const Trajet** newList = new const Trajet*[max*2];
+        for (unsigned int i = 0; i < utilise; i++)
+        {
+            listTrajet[i] = listTrajet[i];
+        }
+        listTrajet = newList;
+        delete [] listTrajet;
+        max = max * 2;
+    }
+
 
 //----------------------------------------------------- Méthodes protégées
 
