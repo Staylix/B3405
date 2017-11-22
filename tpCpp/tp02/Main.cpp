@@ -7,14 +7,14 @@
 
 int main(int argc, char *argv[])
 {
-/*
+
     const TrajetSimple t1 ((char *)"Saint Egreve", (char *)"Grenoble", (char *)"Hypogriffe");
     t1.Afficher();
 
     const Trajet* t2 = new const TrajetSimple ((char *)"A", (char *)"B", (char *)"C");
     t2->Afficher();
     
-    const Trajet* tt = new const TabTrajet ();
+//    const Trajet* tt = new const TabTrajet ();
 
     if (true) {
         TabTrajet tt;
@@ -27,6 +27,6 @@ int main(int argc, char *argv[])
     
     
     delete t2;
-*/
+
     return 0;
 }
