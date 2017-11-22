@@ -1,12 +1,12 @@
 /*************************************************************************
-                           Xxx  -  description
+                           TrajetCompose  -  description
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
     e-mail               : $EMAIL$
 *************************************************************************/
 
-//---------- Réalisation de la classe <Xxx> (fichier Xxx.cpp) ------------
+//---------- Réalisation de la classe <TrajetCompose> (fichier TrajetCompose.cpp) ------------
 
 //---------------------------------------------------------------- INCLUDE
 
@@ -15,57 +15,60 @@ using namespace std;
 #include <iostream>
 
 //------------------------------------------------------ Include personnel
-#include "Xxx.h"
+#include "TrajetCompose.h"
 
 //------------------------------------------------------------- Constantes
 
 //----------------------------------------------------------------- PUBLIC
 
-//----------------------------------------------------- Méthodes publiques
-// type Xxx::Méthode ( liste des paramètres )
-// Algorithme :
-//
-//{
-//} //----- Fin de Méthode
-
-
-//------------------------------------------------- Surcharge d'opérateurs
-Xxx & Xxx::operator = ( const Xxx & unXxx )
-// Algorithme :
-//
+char * TrajetCompose::getDepart() const
 {
-} //----- Fin de operator =
+  return t->Get(0)->getDepart();
+}
+
+char * TrajetCompose::getArrivee() const
+{
+  unsigned int i = t->GetUtilise();
+  return t->Get(i)->getArrivee();
+}
+
+void TrajetCompose::Afficher() const
+{
+  cout << "Trajet compose : " << getDepart() << " --> " << getArrivee() << endl;
+  unsigned int max = t->GetUtilise();
+  for (unsigned int i=0; i<max; i++)
+  {
+    t->Get(i)->Afficher();
+  }
+  cout << "--------------------------" << endl;
+  return;
+}
 
 
 //-------------------------------------------- Constructeurs - destructeur
-Xxx::Xxx ( const Xxx & unXxx )
+
+
+TrajetCompose::TrajetCompose (TabTrajet & tab)
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de copie de <Xxx>" << endl;
+    cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
-} //----- Fin de Xxx (constructeur de copie)
+    t = new TabTrajet(tab);
+
+} //----- Fin de TrajetCompose
 
 
-Xxx::Xxx ( )
+TrajetCompose::~TrajetCompose ( )
 // Algorithme :
 //
 {
 #ifdef MAP
-    cout << "Appel au constructeur de <Xxx>" << endl;
+    cout << "Appel au destructeur de <TrajetCompose>" << endl;
 #endif
-} //----- Fin de Xxx
-
-
-Xxx::~Xxx ( )
-// Algorithme :
-//
-{
-#ifdef MAP
-    cout << "Appel au destructeur de <Xxx>" << endl;
-#endif
-} //----- Fin de ~Xxx
+    delete t;
+} //----- Fin de ~TrajetCompose
 
 
 //------------------------------------------------------------------ PRIVE

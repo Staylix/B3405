@@ -28,15 +28,22 @@ class TrajetCompose : public Trajet {
     public:
 //////////////////////////////////////////////////////////////////  PUBLIC
 //---------------------------------------------------- Fonctions publiques
-// type Nom ( liste de paramètres );
-// Mode d'emploi :
-//
-// Contrat :
-//
+    virtual char * getDepart() const;
+    virtual char * getArrivee() const;
+    // Mode d'emploi :
+    //      Renvoie le départ ou l'arrivée
+
+    virtual void Afficher() const;
+    // Mode d'emploi :
+    //      Affiche le Trajet
+
 //---------------------------------------------------- Constructor and Destructor
 
-    TrajetCompose(TabTrajet t);
+    TrajetCompose(TabTrajet & t);
     virtual ~TrajetCompose ();
+
+    protected:
+      TabTrajet *t;
 
 
 };
