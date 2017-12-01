@@ -29,7 +29,7 @@ char * TrajetCompose::getDepart() const
 char * TrajetCompose::getArrivee() const
 {
   unsigned int i = t->GetUtilise();
-  return t->Get(i)->getArrivee();
+  return t->Get(i-1)->getArrivee();
 }
 
 void TrajetCompose::Afficher() const
@@ -74,4 +74,3 @@ TrajetCompose::~TrajetCompose ( )
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-
