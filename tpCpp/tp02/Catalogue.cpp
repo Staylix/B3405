@@ -42,7 +42,7 @@ void Catalogue::RechercherSimple(char * depart, char * arrivee) const      // TO
 {
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
-        if ( !strcmp(depart, catalog->Get(i)->getDepart) && !strcmp(arrivee, catalog->Get(i)->getArrivee))
+        if ( !strcmp(depart, catalog->Get(i)->getDepart()) && !strcmp(arrivee, catalog->Get(i)->getArrivee()))
         {
             catalog->Get(i)->Afficher();
         }
