@@ -13,6 +13,7 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
+#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
@@ -39,7 +40,13 @@ void Catalogue::AjouterTrajet(const Trajet * T)
 
 void Catalogue::RechercherSimple(char * depart, char * arrivee) const      // TODO
 {
-
+    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+    {
+        if ( !strcmp(depart, catalog->Get(i)->getDepart) && !strcmp(arrivee, catalog->Get(i)->getArrivee))
+        {
+            catalog->Get(i)->Afficher();
+        }
+    }
 }
 
 void Catalogue::RechercherAvancee(char * depart, char * arrivee) const     // TODO
@@ -74,4 +81,3 @@ Catalogue::~Catalogue ( )
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
-

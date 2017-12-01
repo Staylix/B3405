@@ -13,7 +13,7 @@
 
 //------------------------------------------------------------------------
 // Rôle du module <Catalogue>
-// Gere le catalogue, Ajouter des trajets, Afficher le catalogue, rechercher les parcours
+// Gere le catalogue, Ajouter des trajets, Afficher le catalogue, Rechercher les parcours
 //
 //------------------------------------------------------------------------
 
@@ -35,26 +35,26 @@ class Catalogue {
 //
 public:
 
+    void Afficher() const;
+    // Mode d'emploi :
+    //      Affiche le catalogue des Trajets
+
     void AjouterTrajet(const Trajet * T);
     // Contrat :
     //      Lis l'entrée standard
     //      Cree l'objet adequat: TrajetSimple ou TrajetCompose
     //      et l'ajoute au catalogue
 
-    void Afficher() const;
-    // Mode d'emploi :
-    //      Affiche le catalogue des Trajets
-
     void RechercherSimple(char *, char *) const;
     // Mode d'emploi :
     //      Lis l'entrée standard pour récupérer la ville de départ et celle d'arrivée
     //      Affiche les parcours correspondant à la demande utilisateur si possible
-    
+
     void RechercherAvancee(char *, char *) const;
     // Mode d'emploi :
     //      Lis l'entrée standard pour récupérer la ville de départ et celle d'arrivée
     //      Affiche les parcours correspondant multiples à la demande utilisateur si possible
-    
+
 //---------------------------------------------------- Constructor and Desctructor
 
     Catalogue();
@@ -65,4 +65,3 @@ protected:
 
 };
 #endif // Catalogue_H
-
