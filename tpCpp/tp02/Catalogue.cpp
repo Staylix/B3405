@@ -51,16 +51,65 @@ void Catalogue::RechercherSimple(char * depart, char * arrivee) const
 
 void Catalogue::RechercherAvancee(char * depart, char * arrivee) const     // TODO
 {
+    int utilise[catalog->GetUtilise()];
+    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+        {
+            utilise[i] = 0;
+        }
 
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
         if ( !strcmp(depart, catalog->Get(i)->getDepart()) )
         {
-
+            recure(utilise, 1, i, arrivee);
         }
     }
 }
 
+
+void recure(int[] utilise, int numeroTrajet, int trajetPrecedent , char * arriveeFinale)
+{
+    if ( !strcmp(catalog->Get(trajetPrecedent)->getArrivee(), arriveeFinale) )     // Si on a trouvé un parcours
+        AfficherParcours(utilise);
+        return;
+
+    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+    {
+        if ( !strcmp(catalog->Get(i)->getDepart(), catalog->Get(trajetPrecedent)->getArrivee()) )
+        {
+            utilise[i] = numeroTrajet;
+            recure(utilise, numeroTrajet + 1, i, arriveeFinale);
+            utilise[i] = 0;
+        }
+    }
+}
+
+void AfficherParcours(int[] utilise)        // TODO
+{
+    indiceMax = max(utilise);
+    for (unsigned int j = 1; j <= indiceMax; j++)
+    {
+        for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+        {
+            if (j = utilise[i])
+            {
+                catalog->Get(i)->Afficher();
+            }
+        }
+    }
+    cout << endl;
+}
+
+int Catalogue::max(int[] tab)       // On sait que tab (qui sera utilise) est de la taille de catalog
+// Cette méthode va servir pour afficher un parcours trouvé
+{
+    int maxi = 0
+    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+    {
+        if (tab[i] > maxi) maxi = tab[i];
+    }
+    return maxi
+}
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -102,7 +151,7 @@ bool suivant(const trajet * arriveeEtapePrec, char * arriveeFinale)
         {
             if ( !strcmp(arriveeFinale, catalog->Get(i)->getArrivee()) )
             {
-                cout 
+                cout
             }
         }
     }
