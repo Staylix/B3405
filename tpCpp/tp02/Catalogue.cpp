@@ -49,49 +49,27 @@ void Catalogue::RechercherSimple(char * depart, char * arrivee) const
     }
 }
 
-void Catalogue::RechercherAvancee(char * depart, char * arrivee) const     // TODO
-{
-    int utilise[catalog->GetUtilise()];
-    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
-        {
-            utilise[i] = 0;
-        }
 
+
+int Catalogue::max(int utilise[]) const       // On sait que tab (qui sera utilise) est de la taille de catalog
+// Cette méthode va servir pour afficher un parcours trouvé
+{
+    int maxi = 0;
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
-        if ( !strcmp(depart, catalog->Get(i)->getDepart()) )
-        {
-            recure(utilise, 1, i, arrivee);
-        }
+        if (utilise[i] > maxi) maxi = utilise[i];
     }
+    return maxi;
 }
 
-
-void recure(int[] utilise, int numeroTrajet, int trajetPrecedent , char * arriveeFinale)
+void Catalogue::AfficherParcours(int utilise[]) const
 {
-    if ( !strcmp(catalog->Get(trajetPrecedent)->getArrivee(), arriveeFinale) )     // Si on a trouvé un parcours
-        AfficherParcours(utilise);
-        return;
-
-    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
-    {
-        if ( !strcmp(catalog->Get(i)->getDepart(), catalog->Get(trajetPrecedent)->getArrivee()) )
-        {
-            utilise[i] = numeroTrajet;
-            recure(utilise, numeroTrajet + 1, i, arriveeFinale);
-            utilise[i] = 0;
-        }
-    }
-}
-
-void AfficherParcours(int[] utilise)        // TODO
-{
-    indiceMax = max(utilise);
-    for (unsigned int j = 1; j <= indiceMax; j++)
+    int indiceMax = this->max(utilise);
+    for (int j = 1; j <= indiceMax; j++)
     {
         for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
         {
-            if (j = utilise[i])
+            if (j == utilise[i])
             {
                 catalog->Get(i)->Afficher();
             }
@@ -100,16 +78,41 @@ void AfficherParcours(int[] utilise)        // TODO
     cout << endl;
 }
 
-int Catalogue::max(int[] tab)       // On sait que tab (qui sera utilise) est de la taille de catalog
-// Cette méthode va servir pour afficher un parcours trouvé
+void Catalogue::recure(int utilise[], int numeroTrajet, int trajetPrecedent , char * arriveeFinale) const
 {
-    int maxi = 0
+    if ( !strcmp(catalog->Get(trajetPrecedent)->getArrivee(), arriveeFinale) )     // Si on a trouvé un parcours
+        this->AfficherParcours(utilise);
+        return;
+
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
-        if (tab[i] > maxi) maxi = tab[i];
+        if ( !strcmp(catalog->Get(i)->getDepart(), catalog->Get(trajetPrecedent)->getArrivee()) )
+        {
+            utilise[i] = numeroTrajet;
+            this->recure(utilise, numeroTrajet + 1, i, arriveeFinale);
+            utilise[i] = 0;
+        }
     }
-    return maxi
 }
+
+void Catalogue::RechercherAvancee(char * depart, char * arrivee) const
+{
+    int * utilise = new int[catalog->GetUtilise()];
+    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+    {
+        for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+            {
+                utilise[i] = 0;
+            }
+        if ( !strcmp(depart, catalog->Get(i)->getDepart()) )
+        {
+            this->recure(utilise, 1, i, arrivee);
+        }
+    }
+    delete [] utilise;
+}
+
+
 
 
 //-------------------------------------------- Constructeurs - destructeur
@@ -137,25 +140,5 @@ Catalogue::~Catalogue ( )
 
 
 //------------------------------------------------------------------ PRIVE
-
-//-------------------------- Méthode privée ? A vérifier
-
-const trajet * etape (const trajet * precedent, const trajet * actuel, const trajet * suivant)      // Ligne à supprimer
-
-
-bool suivant(const trajet * arriveeEtapePrec, char * arriveeFinale)
-{
-    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
-    {
-        if ( !strcmp(arriveeEtapePrec, catalog->Get(i)->getDepart()) )
-        {
-            if ( !strcmp(arriveeFinale, catalog->Get(i)->getArrivee()) )
-            {
-                cout
-            }
-        }
-    }
-}
-
 
 //----------------------------------------------------- Méthodes protégées

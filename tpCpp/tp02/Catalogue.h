@@ -60,8 +60,14 @@ public:
     Catalogue();
     virtual ~Catalogue();
 
+
 protected:
     TabTrajet * catalog;
 
+    int max(int tab[]) const;
+    void AfficherParcours(int utilise[]) const;
+    void recure(int utilise[], int numeroTrajet, int trajetPrecedent , char * arriveeFinale) const;
+
 };
+
 #endif // Catalogue_H
