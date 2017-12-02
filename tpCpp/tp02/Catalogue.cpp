@@ -38,7 +38,7 @@ void Catalogue::AjouterTrajet(const Trajet * T)
     catalog->Add(T);
 }
 
-void Catalogue::RechercherSimple(char * depart, char * arrivee) const      // TODO
+void Catalogue::RechercherSimple(char * depart, char * arrivee) const
 {
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
@@ -52,7 +52,16 @@ void Catalogue::RechercherSimple(char * depart, char * arrivee) const      // TO
 void Catalogue::RechercherAvancee(char * depart, char * arrivee) const     // TODO
 {
 
+    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+    {
+        if ( !strcmp(depart, catalog->Get(i)->getDepart()) )
+        {
+
+        }
+    }
 }
+
+
 
 //-------------------------------------------- Constructeurs - destructeur
 
@@ -79,5 +88,25 @@ Catalogue::~Catalogue ( )
 
 
 //------------------------------------------------------------------ PRIVE
+
+//-------------------------- Méthode privée ? A vérifier
+
+const trajet * etape (const trajet * precedent, const trajet * actuel, const trajet * suivant)      // Ligne à supprimer
+
+
+bool suivant(const trajet * arriveeEtapePrec, char * arriveeFinale)
+{
+    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+    {
+        if ( !strcmp(arriveeEtapePrec, catalog->Get(i)->getDepart()) )
+        {
+            if ( !strcmp(arriveeFinale, catalog->Get(i)->getArrivee()) )
+            {
+                cout 
+            }
+        }
+    }
+}
+
 
 //----------------------------------------------------- Méthodes protégées
