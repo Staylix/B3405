@@ -45,12 +45,12 @@ public:
     //      Cree l'objet adequat: TrajetSimple ou TrajetCompose
     //      et l'ajoute au catalogue
 
-    void RechercherSimple(char *, char *) const;
+    void RechercherSimple(const char *, const char *) const;
     // Mode d'emploi :
     //      Lis l'entrée standard pour récupérer la ville de départ et celle d'arrivée
     //      Affiche les parcours correspondant à la demande utilisateur si possible
 
-    void RechercherAvancee(char *, char *) const;
+    void RechercherAvancee(const char *, const char *) const;
     // Mode d'emploi :
     //      Lis l'entrée standard pour récupérer la ville de départ et celle d'arrivée
     //      Affiche les parcours correspondant multiples à la demande utilisateur si possible
@@ -66,7 +66,7 @@ protected:
 
     int max(int tab[]) const;
     void AfficherParcours(int utilise[]) const;
-    void recure(int utilise[], int numeroTrajet, int trajetPrecedent , char * arriveeFinale) const;
+    void recure(int utilise[], int numeroTrajet, int trajetPrecedent , const char * arriveeFinale) const;
 
 };
 

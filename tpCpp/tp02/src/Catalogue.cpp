@@ -38,7 +38,7 @@ void Catalogue::AjouterTrajet(const Trajet * T)
     catalog->Add(T);
 }
 
-void Catalogue::RechercherSimple(char * depart, char * arrivee) const
+void Catalogue::RechercherSimple(const char * depart, const char * arrivee) const
 {
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
@@ -49,7 +49,7 @@ void Catalogue::RechercherSimple(char * depart, char * arrivee) const
     }
 }
 
-void Catalogue::RechercherAvancee(char * depart, char * arrivee) const
+void Catalogue::RechercherAvancee(const char * depart, const char * arrivee) const
 {
     int * utilise = new int[catalog->GetUtilise()];
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
@@ -125,7 +125,7 @@ void Catalogue::AfficherParcours(int utilise[]) const
     cout << endl;
 }
 
-void Catalogue::recure(int utilise[], int numeroTrajet, int trajetPrecedent , char * arriveeFinale) const
+void Catalogue::recure(int utilise[], int numeroTrajet, int trajetPrecedent , const char * arriveeFinale) const
 {
     if ( !strcmp(catalog->Get(trajetPrecedent)->getArrivee(), arriveeFinale) )     // Si on a trouvé un parcours
     {
