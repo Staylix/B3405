@@ -12,21 +12,23 @@ int main()
 
     const Trajet* t2 = new const TrajetSimple ((char *)"A", (char *)"B", (char *)"C");
     t2->Afficher();
-    
+
 //    const Trajet* tt = new const TabTrajet ();
 
     if (true) {
         TabTrajet tt;
         tt.Add((const Trajet *)&t1);
         tt.Add(t2);
-        
+
         TrajetCompose tc (tt);
     }
-    
-    
-    
+
+
+
     delete t2;
     */
+
+
+
     return 0;
 }
-
