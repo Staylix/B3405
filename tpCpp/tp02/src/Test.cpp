@@ -10,16 +10,31 @@ int main()
     //Catalogue *MonCatalogue = new Catalogue();
     Catalogue MonCatalogue();
 
-    const TrajetSimple TS1 ((char *)"Saint Egreve", (char *)"Grenoble", (char *)"Hypogriffe");
-    TS1.Afficher();
+    const TrajetSimple* ts1 = new const TrajetSimple((char *)"Saint Egreve", (char *)"Grenoble", (char *)"Hypogriffe");
+    ts1->Afficher();
 
-    const TrajetSimple TS2 ((char *)"Grenoble", (char *)"Lyon", (char *)"Hypogriffe");
-    TS2.Afficher();
+    const TrajetSimple* ts2 = new const TrajetSimple((char *)"Grenoble", (char *)"Lyon", (char *)"Hypogriffe");
+    ts2->Afficher();
 
-    /*const TrajetSimple TC1 (
-        (char *)"Saint Egreve", (char *)"Grenoble", (char *)"Hypogriffe");
-    t1.Afficher();*/
 
+    const TrajetSimple* tc1T1 = new const TrajetSimple((char *)"Grenoble", (char *)"Charavines", (char *)"Speed-Riding");
+    const TrajetSimple* tc1T2 = new const TrajetSimple((char *)"Charavines", (char *)"Lyon", (char *)"BlaBlaCar");
+    TabTrajet* tc1Tab = new TabTrajet();
+    tc1Tab->Add(tc1T1);
+    tc1Tab->Add(tc1T2);
+
+    const TrajetCompose * tc1 = new TrajetCompose(*tc1Tab);
+    tc1->Afficher();
+
+
+    const TrajetSimple* tc2T1 = new const TrajetSimple((char *)"Saint Egreve", (char *)"Valfrejus", (char *)"BlaBlaCar");
+    const TrajetSimple* tc2T2 = new const TrajetSimple((char *)"Valfrejus", (char *)"Lyon", (char *)"Hypogriffe");
+    TabTrajet* tc2Tab = new TabTrajet();
+    tc1Tab->Add(tc2T1);
+    tc1Tab->Add(tc2T2);
+
+    const TrajetCompose * tc2 = new TrajetCompose(*tc2Tab);
+    tc2->Afficher();
 
 
 

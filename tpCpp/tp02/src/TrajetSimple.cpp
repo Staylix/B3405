@@ -31,7 +31,7 @@ void TrajetSimple::Afficher() const {
 TrajetSimple::TrajetSimple (char *dep, char * arr, char * mt)
 {
 #if MAP
-  cout << "Appel au constructeur de TrajetSimple" << endl;
+  cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
 
   depart = new char[strlen(dep)+1];
@@ -50,7 +50,7 @@ TrajetSimple::TrajetSimple (char *dep, char * arr, char * mt)
 
 TrajetSimple::~TrajetSimple () {
 #if MAP
-  cout << "Appel au destructeur de TrajetSimple" << endl;
+  cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
   delete [] depart;
   delete [] arrivee;
