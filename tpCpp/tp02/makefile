@@ -1,27 +1,55 @@
-RM = rm
+#--------------- SET DIR AND TARGET NAME HERE -------
+DIRSRC = src/
+DIROBJ = obj/
+DIRBIN = bin/
+DIRHEADERS = int/
+
+TARGET = a.out
+
+#--------------- Linux commands
+MKDIR = @mkdir -p
+RM = @rm -f
 ECHO = @echo
-COMP = @g++
-LINKER = @g++
-RMFLAGS = -f
-ECHOFLAGS = 
+
+#--------------- COMPILATOR
+COMP = @g++ -c
 COMPFLAGS = -ansi -pedantic -Wall -std=c++11 -D MAP
-REAL = $(wildcard *.cpp)
-OBJ = $(REAL:.cpp=.o)
-EXE = a.out
-LIBS =
-CLEAN = clean
+
+#--------------- LINKER
+LINKER = @g++
+LINKERFLAGS = 
+LIBS = 
+
+#--------------- FILES
+SRC = $(wildcard $(DIRSRC)*.cpp)
+OBJ = $(SRC:$(DIRSRC)%.cpp=$(DIROBJ)%.o)
+
+.PHONY: clean, cleanall
 
 
-PHONY = $(CLEAN)
+all: mkdir my_all
 
-$(EXE): $(OBJ)
-	$(ECHO) "Linker de $(OBJ)"
-	$(LINKER) -o $(EXE) $(OBJ) $(LIBS)
+mkdir:
+	$(MKDIR) $(DIROBJ) $(DIRBIN)
 
-%.o: %.cpp
-	$(ECHO) "Compilation de <$<>"
-	$(COMP) $(COMPFLAGS) -c  -o $@ $<
+my_all: $(OBJ)
+	$(ECHO) "Linker de $(OBJ) dans $(DIRBIN)$(TARGET)"
+	$(LINKER) -o $(DIRBIN)$(TARGET) $(OBJ)
+	$(ECHO) "Done"
 
-$(CLEAN):
-	$(RM) $(RMFLAGS) $(EXE) $(OBJ) core
+$(DIROBJ)%.o: $(DIRSRC)%.cpp
+	$(ECHO) "Compilation de $<"
+	$(COMP) $(COMPFLAGS) -I $(DIRHEADERS) -o $@ $<
+	$(ECHO) "Done"
+
+clean:
+	$(ECHO) "Suppression des binaires translatables $(DIROBJ)*.o."
+	$(RM) $(DIROBJ)*.o
+	$(ECHO) "Done"
+
+cleanall:
+	$(ECHO) "Suppression de $(DIRBIN)$(TARGET) et de $(DIROBJ)*.o"
+	$(RM) $(DIRBIN)$(TARGET) $(OBJ)
+	$(ECHO) "Done"
+
 
