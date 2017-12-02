@@ -49,52 +49,6 @@ void Catalogue::RechercherSimple(char * depart, char * arrivee) const
     }
 }
 
-
-
-int Catalogue::max(int utilise[]) const       // On sait que tab (qui sera utilise) est de la taille de catalog
-// Cette méthode va servir pour afficher un parcours trouvé
-{
-    int maxi = 0;
-    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
-    {
-        if (utilise[i] > maxi) maxi = utilise[i];
-    }
-    return maxi;
-}
-
-void Catalogue::AfficherParcours(int utilise[]) const
-{
-    int indiceMax = this->max(utilise);
-    for (int j = 1; j <= indiceMax; j++)
-    {
-        for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
-        {
-            if (j == utilise[i])
-            {
-                catalog->Get(i)->Afficher();
-            }
-        }
-    }
-    cout << endl;
-}
-
-void Catalogue::recure(int utilise[], int numeroTrajet, int trajetPrecedent , char * arriveeFinale) const
-{
-    if ( !strcmp(catalog->Get(trajetPrecedent)->getArrivee(), arriveeFinale) )     // Si on a trouvé un parcours
-        this->AfficherParcours(utilise);
-        return;
-
-    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
-    {
-        if ( !strcmp(catalog->Get(i)->getDepart(), catalog->Get(trajetPrecedent)->getArrivee()) )
-        {
-            utilise[i] = numeroTrajet;
-            this->recure(utilise, numeroTrajet + 1, i, arriveeFinale);
-            utilise[i] = 0;
-        }
-    }
-}
-
 void Catalogue::RechercherAvancee(char * depart, char * arrivee) const
 {
     int * utilise = new int[catalog->GetUtilise()];
@@ -139,6 +93,52 @@ Catalogue::~Catalogue ( )
 } //----- Fin de ~Catalogue
 
 
+
 //------------------------------------------------------------------ PRIVE
 
 //----------------------------------------------------- Méthodes protégées
+
+int Catalogue::max(int utilise[]) const       // On sait que tab (qui sera utilise) est de la taille de catalog
+// Cette méthode va servir pour afficher un parcours trouvé
+{
+    int maxi = 0;
+    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+    {
+        if (utilise[i] > maxi) maxi = utilise[i];
+    }
+    return maxi;
+}
+
+void Catalogue::AfficherParcours(int utilise[]) const
+{
+    int indiceMax = this->max(utilise);
+    for (int j = 1; j <= indiceMax; j++)
+    {
+        for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+        {
+            if (j == utilise[i])
+            {
+                catalog->Get(i)->Afficher();
+            }
+        }
+    }
+    cout << endl;
+}
+
+void Catalogue::recure(int utilise[], int numeroTrajet, int trajetPrecedent , char * arriveeFinale) const
+{
+    if ( !strcmp(catalog->Get(trajetPrecedent)->getArrivee(), arriveeFinale) )     // Si on a trouvé un parcours
+    {
+        this->AfficherParcours(utilise);
+        return;
+    }
+    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+    {
+        if ( !strcmp(catalog->Get(i)->getDepart(), catalog->Get(trajetPrecedent)->getArrivee()) )
+        {
+            utilise[i] = numeroTrajet;
+            this->recure(utilise, numeroTrajet + 1, i, arriveeFinale);
+            utilise[i] = 0;
+        }
+    }
+}
