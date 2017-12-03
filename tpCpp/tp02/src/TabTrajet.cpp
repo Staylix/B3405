@@ -97,7 +97,7 @@ TabTrajet::~TabTrajet ( )
     {
         delete listTrajet[i];
     }
-    delete [] listTrajet;
+    delete listTrajet;
 } //----- Fin de ~TabTrajet
 
 
