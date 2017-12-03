@@ -35,10 +35,10 @@ using namespace std;
             this->realloc();
         }
         this->listTrajet[this->utilise] = t;
-        
+        this->utilise++;
         return;
     }
-    
+
     const Trajet * TabTrajet::Get ( unsigned int i ) const
     {
         if (i >= this->utilise)
@@ -47,7 +47,7 @@ using namespace std;
         }
         return this->listTrajet[i];
     }
-    
+
     unsigned int TabTrajet::GetUtilise() const
     {
         return this->utilise;
@@ -116,4 +116,3 @@ TabTrajet::~TabTrajet ( )
 
 
 //----------------------------------------------------- Méthodes protégées
-

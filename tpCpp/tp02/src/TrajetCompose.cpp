@@ -34,13 +34,13 @@ char * TrajetCompose::getArrivee() const
 
 void TrajetCompose::Afficher() const
 {
-  cout << "Trajet compose : " << getDepart() << " --> " << getArrivee() << endl;
+  cout << getDepart() << " ----> " << getArrivee() << " via :" << endl;
   unsigned int max = t->GetUtilise();
   for (unsigned int i=0; i<max; i++)
   {
+    cout << "\t";
     t->Get(i)->Afficher();
   }
-  cout << "--------------------------" << endl;
   return;
 }
 
