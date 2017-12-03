@@ -25,6 +25,7 @@ int main()
 {
   test();
 
+  /*
   Catalogue *MonCatalogue = new Catalogue();
 
 
@@ -80,6 +81,6 @@ int main()
   cout << "Good bye and have a nice trip ! ;)" << endl;
 
   delete MonCatalogue;
-
+*/
   return 0;
 }

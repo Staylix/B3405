@@ -20,7 +20,7 @@ void test()
   //TrajetCompose
   const TrajetSimple * pTS6 = new TrajetSimple((char *)"Lyon", (char *)"Marseille", (char *)"Voiture");
   const TrajetSimple * pTS7 = new TrajetSimple((char *)"Marseille", (char *)"Paris", (char *)"Voiture");
-  TabTrajet tt;
+  TabTrajet tt; 
   tt.Add(pTS6);
   tt.Add(pTS7);
 

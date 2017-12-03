@@ -27,16 +27,23 @@ using namespace std;
 
 void Catalogue::Afficher() const
 {
-  cout << "Taille catalogue = " << catalog->GetUtilise() << endl;
-    for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
+  unsigned int size = catalog->GetUtilise();
+#if MAP
+  cout << "Catalogue::Afficher --- Taille catalogue = " << size << endl;
+#endif
+  if (size > 0 ) {
+    for (unsigned int i = 0; i < size; i++)
     {
-        catalog->Get(i)->Afficher();
+      cout << i << endl;
+      catalog->Get(i)->Afficher();
     }
+  }
 }
 
 void Catalogue::AjouterTrajet(const Trajet * T)
 {
     catalog->Add(T);
+    cout << "Taille catalogue après ajout = " << catalog->GetUtilise() << endl;
 }
 
 void Catalogue::RechercherSimple(const char * depart, const char * arrivee) const
@@ -83,7 +90,7 @@ Catalogue::Catalogue ( )
 #ifdef MAP
     cout << "Appel au constructeur de <Catalogue>" << endl;
 #endif
-    catalog = new TabTrajet;
+    catalog = new TabTrajet();
 } //----- Fin de Catalogue
 
 

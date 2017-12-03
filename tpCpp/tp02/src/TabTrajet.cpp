@@ -51,7 +51,7 @@ const Trajet * TabTrajet::Get ( unsigned int i ) const
 
 unsigned int TabTrajet::GetUtilise() const
 {
-    return this->utilise;
+  return this->utilise;
 }
 
 
@@ -93,11 +93,11 @@ TabTrajet::~TabTrajet ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TabTrajet>" << endl;
 #endif
-    for (unsigned int i = 0; i < utilise; i++)
+    /*for (unsigned int i = 0; i < utilise; i++)
     {
         delete listTrajet[i];
-    }
-    delete listTrajet;
+    }*/
+    delete [] listTrajet;
 } //----- Fin de ~TabTrajet
 
 
