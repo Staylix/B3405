@@ -13,12 +13,12 @@ ECHO = @echo
 
 #--------------- COMPILATOR
 COMP = @g++ -c
-COMPFLAGS = -ansi -pedantic -Wall -std=c++11 -D MAP
+COMPFLAGS = -ansi -pedantic -Wall -std=c++11 # -D MAP
 
 #--------------- LINKER
 LINKER = @g++
-LINKERFLAGS = 
-LIBS = 
+LINKERFLAGS =
+LIBS =
 
 #--------------- FILES
 SRC = $(wildcard $(DIRSRC)*.cpp)
@@ -51,5 +51,3 @@ cleanall:
 	$(ECHO) "Suppression de $(DIRBIN)$(TARGET) et de $(DIROBJ)*.o"
 	$(RM) $(DIRBIN)$(TARGET) $(OBJ)
 	$(ECHO) "Done"
-
-

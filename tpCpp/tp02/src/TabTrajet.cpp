@@ -30,18 +30,23 @@ using namespace std;
 
 void TabTrajet::Add ( const Trajet * t )
 {
-    if (this->max <= this->utilise)
-    {
-        this->realloc();
-    }
-    this->listTrajet[this->utilise++] = t;
-    
-    return;
+  if (this->max <= this->utilise)
+  {
+      this->realloc();
+  }
+  this->listTrajet[this->utilise] = t;
+  this->utilise++;
+  return;
 }
+
 
 const Trajet * TabTrajet::Get ( unsigned int i ) const
 {
     if (i >= this->utilise)
+=======
+
+    unsigned int TabTrajet::GetUtilise() const
+>>>>>>> gregoire
     {
         return nullptr;
     }
@@ -116,4 +121,3 @@ void TabTrajet::realloc()
 
 
 //----------------------------------------------------- Méthodes protégées
-

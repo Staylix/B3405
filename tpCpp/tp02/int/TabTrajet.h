@@ -13,7 +13,7 @@
 
 //------------------------------------------------------------------------
 // Rôle du module <TabTrajet>
-// Stocke un tableau dynamique de Trajet * et se réalloue automatiquement 
+// Stocke un tableau dynamique de Trajet * et se réalloue automatiquement
 //------------------------------------------------------------------------
 
 /////////////////////////////////////////////////////////////////  INCLUDE
@@ -53,7 +53,7 @@ protected:
     unsigned int max;
     unsigned int utilise;
     const Trajet** listTrajet;
-    
+
 private:
     void realloc ();
 

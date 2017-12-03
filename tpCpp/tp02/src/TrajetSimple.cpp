@@ -10,19 +10,19 @@ using namespace std;
  * Public methods *
  ******************/
 
-char * TrajetSimple::getDepart() const {
-#if MAP
-  cout << "getDepart de TrajetSimple" << endl;
-#endif
+char * TrajetSimple::getDepart() const
+{
   return depart;
 }
 
-char * TrajetSimple::getArrivee() const {
+char * TrajetSimple::getArrivee() const
+{
   return arrivee;
 }
 
-void TrajetSimple::Afficher() const {
-  cout << depart << " ---> " << arrivee << " en " << moyen << endl;
+void TrajetSimple::Afficher() const
+{
+  cout << depart << " --> " << arrivee << " en " << moyen << endl;
 }
 
 /************************************
@@ -31,7 +31,7 @@ void TrajetSimple::Afficher() const {
 TrajetSimple::TrajetSimple (char *dep, char * arr, char * mt)
 {
 #if MAP
-  cout << "Appel au constructeur de TrajetSimple" << endl;
+  cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
 
   depart = new char[strlen(dep)+1];
@@ -48,9 +48,10 @@ TrajetSimple::TrajetSimple (char *dep, char * arr, char * mt)
   strcpy(moyen, mt);
 }
 
-TrajetSimple::~TrajetSimple () {
+TrajetSimple::~TrajetSimple ()
+{
 #if MAP
-  cout << "Appel au destructeur de TrajetSimple" << endl;
+  cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
   delete [] depart;
   delete [] arrivee;
