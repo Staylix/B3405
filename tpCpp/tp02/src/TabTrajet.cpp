@@ -43,10 +43,6 @@ void TabTrajet::Add ( const Trajet * t )
 const Trajet * TabTrajet::Get ( unsigned int i ) const
 {
     if (i >= this->utilise)
-=======
-
-    unsigned int TabTrajet::GetUtilise() const
->>>>>>> gregoire
     {
         return nullptr;
     }
