@@ -13,7 +13,7 @@ ECHO = @echo
 
 #--------------- COMPILATOR
 COMP = @g++ -c
-COMPFLAGS = -ansi -pedantic -Wall -std=c++11 -D MAP
+COMPFLAGS = -ansi -pedantic -Wall -std=c++11 -D MAP -g
 
 #--------------- LINKER
 LINKER = @g++

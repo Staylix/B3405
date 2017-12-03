@@ -30,7 +30,7 @@ using namespace std;
 
 void TabTrajet::Add ( const Trajet * t )
 {
-  if (this->max <= this->utilise)
+  if (this->utilise >= this->max)
   {
       this->realloc();
   }
@@ -83,6 +83,10 @@ TabTrajet::TabTrajet ( )
     max = 5;
     utilise = 0;
     listTrajet = new const Trajet*[max];
+    for (unsigned int i = 0; i < max; i++)
+    {
+      listTrajet[i] = nullptr;
+    }
 } //----- Fin de TabTrajet
 
 
@@ -93,10 +97,15 @@ TabTrajet::~TabTrajet ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TabTrajet>" << endl;
 #endif
-    /*for (unsigned int i = 0; i < utilise; i++)
+    
+    for (unsigned int i = 0; i < utilise; i++)
     {
-        delete listTrajet[i];
-    }*/
+        if(listTrajet[i] != nullptr)
+        {
+          delete listTrajet[i];
+          listTrajet[i] = nullptr;
+        }
+    }
     delete [] listTrajet;
 } //----- Fin de ~TabTrajet
 

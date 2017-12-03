@@ -34,16 +34,22 @@ void Catalogue::Afficher() const
   if (size > 0 ) {
     for (unsigned int i = 0; i < size; i++)
     {
-      cout << i << endl;
-      catalog->Get(i)->Afficher();
+      cout << i;
+      if (catalog->Get(i) != nullptr)
+      {
+        catalog->Get(i)->Afficher();
+      }
+      else
+      {
+        cout << " is null..." << endl;
+      }
     }
   }
 }
 
 void Catalogue::AjouterTrajet(const Trajet * T)
 {
-    catalog->Add(T);
-    cout << "Taille catalogue après ajout = " << catalog->GetUtilise() << endl;
+  catalog->Add(T);
 }
 
 void Catalogue::RechercherSimple(const char * depart, const char * arrivee) const

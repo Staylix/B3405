@@ -22,9 +22,6 @@ char * TrajetSimple::getArrivee() const
 
 void TrajetSimple::Afficher() const
 {
-#if MAP
-  cout << "Méthode afficher de trajetSimple" << endl;
-#endif
   cout << depart << " --> " << arrivee << " en " << moyen << endl;
 }
 
