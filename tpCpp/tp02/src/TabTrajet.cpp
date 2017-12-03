@@ -28,34 +28,34 @@ using namespace std;
 //{
 //} //----- Fin de Méthode
 
-    void TabTrajet::Add ( const Trajet * t )
+void TabTrajet::Add ( const Trajet * t )
+{
+    if (this->max <= this->utilise)
     {
-        if (this->max <= this->utilise)
-        {
-            this->realloc();
-        }
-        this->listTrajet[this->utilise] = t;
-        
-        return;
+        this->realloc();
     }
+    this->listTrajet[this->utilise++] = t;
     
-    const Trajet * TabTrajet::Get ( unsigned int i ) const
+    return;
+}
+
+const Trajet * TabTrajet::Get ( unsigned int i ) const
+{
+    if (i >= this->utilise)
     {
-        if (i >= this->utilise)
-        {
-            return nullptr;
-        }
-        return this->listTrajet[i];
+        return nullptr;
     }
-    
-    unsigned int TabTrajet::GetUtilise() const
-    {
-        return this->utilise;
-    }
+    return this->listTrajet[i];
+}
+
+unsigned int TabTrajet::GetUtilise() const
+{
+    return this->utilise;
+}
 
 
 //-------------------------------------------- Constructeurs - destructeur
-TabTrajet::TabTrajet ( const TabTrajet & unTabTrajet )
+TabTrajet::TabTrajet ( const TabTrajet & unTabTrajet )  //constructeur de copie
 // Algorithme :
 //
 {
@@ -102,17 +102,17 @@ TabTrajet::~TabTrajet ( )
 
 //------------------------------------------------------------------ PRIVE
 
-    void TabTrajet::realloc()
+void TabTrajet::realloc()
+{
+    const Trajet** newList = new const Trajet*[max*2];
+    for (unsigned int i = 0; i < utilise; i++)
     {
-        const Trajet** newList = new const Trajet*[max*2];
-        for (unsigned int i = 0; i < utilise; i++)
-        {
-            listTrajet[i] = listTrajet[i];
-        }
-        listTrajet = newList;
-        delete [] listTrajet;
-        max = max * 2;
+        listTrajet[i] = listTrajet[i];
     }
+    listTrajet = newList;
+    delete [] listTrajet;
+    max = max * 2;
+}
 
 
 //----------------------------------------------------- Méthodes protégées

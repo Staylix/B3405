@@ -27,6 +27,7 @@ using namespace std;
 
 void Catalogue::Afficher() const
 {
+  cout << "Taille catalogue = " << catalog->GetUtilise() << endl;
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
         catalog->Get(i)->Afficher();
