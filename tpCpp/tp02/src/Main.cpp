@@ -33,7 +33,7 @@ int main()
   cout << "Que voulez vous faire ?" << endl << endl;
   print_option();
 
-  unsigned int choix = -1;
+  unsigned int choix = 10;
   char * depart = new char[MAX];
   char * arrivee = new char[MAX];
   char * moyen = new char[MAX];
@@ -48,7 +48,8 @@ int main()
       cin >> depart;
       cin >> arrivee;
       cin >> moyen;
-      MonCatalogue->AjouterTrajet((const char*)depart, (const char*)arrivee, (const char*)moyen);
+      const TrajetSimple * trajet = new const TrajetSimple(depart, arrivee, moyen);
+      MonCatalogue->AjouterTrajet(trajet);
       cout << "Trajet ajouté !" << endl;
     }
     if (choix == 2)
