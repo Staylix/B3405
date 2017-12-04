@@ -1,17 +1,19 @@
 #include <iostream>
+using namespace std;
 
 #include "TrajetSimple.h"
 #include "TrajetCompose.h"
 #include "Trajet.h"
 #include "TabTrajet.h"
 #include "Catalogue.h"
+
 //----------TESTS
 #include "TestUnit.h"
+#include "TestUnit2.h"
 
 
 #define MAX 100
 
-using namespace std;
 
 static void print_option() {
   cout << "\t1 - Ajouter un trajet simple au catalogue" << endl;
@@ -24,9 +26,9 @@ static void print_option() {
 
 int main()
 {
+  test2();
   test();
 
-/*
   Catalogue *MonCatalogue = new Catalogue();
 
 
@@ -52,7 +54,6 @@ int main()
       cin >> moyen;
       const TrajetSimple * trajet = new const TrajetSimple(depart, arrivee, moyen);
       MonCatalogue->AjouterTrajet(trajet);
-      cout << "Trajet ajouté !" << endl;
     }
     if (choix == 2)
     {
@@ -68,9 +69,8 @@ int main()
           const TrajetSimple * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
           tab->Add(sousTrajet);
       }
-      const TrajetCompose * trajet = new const TrajetCompose(*tab);
+      const TrajetCompose * trajet = new const TrajetCompose(tab);
       MonCatalogue->AjouterTrajet(trajet);
-      //delete tab;                                                           // TO Check
       cout << "Trajet ajouté !" << endl;
     }
     if (choix == 3)
@@ -101,8 +101,9 @@ int main()
   }   // Fin du while
 
   cout << "Good bye and have a nice trip ! ;)" << endl;
-
+  delete [] depart;
+  delete [] arrivee;
+  delete [] moyen;
   delete MonCatalogue;
-*/
   return 0;
 }

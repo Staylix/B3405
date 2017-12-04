@@ -1,14 +1,26 @@
-//-------------Realisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp)
+/*************************************************************************
+                           TrajetSimple  -  description
+                             -------------------
+    début                : $DATE$
+    copyright            : (C) $YEAR$ par $AUTHOR$
+    e-mail               : $EMAIL$
+*************************************************************************/
 
+//---------- Réalisation de la classe <TrajetSimple> (fichier TrajetSimple.cpp) ------------
+
+//---------------------------------------------------------------- INCLUDE
+
+//-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
 #include <string.h>
 
+//------------------------------------------------------ Include personnel
 #include "TrajetSimple.h"
 
-/******************
- * Public methods *
- ******************/
+//----------------------------------------------------------------- PUBLIC
+
+//----------------------------------------------------- Méthodes publiques
 
 char * TrajetSimple::getDepart() const
 {
@@ -25,9 +37,9 @@ void TrajetSimple::Afficher() const
   cout << depart << " --> " << arrivee << " en " << moyen << endl;
 }
 
-/************************************
- * Constructor(s) and Destructor(s) *
- ************************************/
+
+//-------------------------------------------- Constructeurs - destructeur
+
 TrajetSimple::TrajetSimple (char *dep, char * arr, char * mt)
 {
 #if MAP
@@ -38,9 +50,9 @@ TrajetSimple::TrajetSimple (char *dep, char * arr, char * mt)
   arrivee = new char[strlen(arr)+1];
   moyen = new char[strlen(mt)+1];
 
-  if(depart == NULL || arrivee == NULL || moyen == NULL)
+  if (depart == NULL || arrivee == NULL || moyen == NULL)
   {
-    cerr << "Erreur lors de l'alloc des attrib d'un new TrajetSimple" << endl;
+    cerr << "Erreur lors de l'allocation des attributs du TrajetSimple" << endl;
   }
 
   strcpy(depart, dep);

@@ -41,7 +41,7 @@ class TrajetCompose : public Trajet {
 
 //---------------------------------------------------- Constructor and Destructor
 
-    TrajetCompose(TabTrajet & t);
+    TrajetCompose(TabTrajet * t);
     virtual ~TrajetCompose ();
 
     protected:

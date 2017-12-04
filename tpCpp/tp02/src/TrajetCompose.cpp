@@ -17,9 +17,9 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "TrajetCompose.h"
 
-//------------------------------------------------------------- Constantes
-
 //----------------------------------------------------------------- PUBLIC
+
+//----------------------------------------------------- Méthodes publiques
 
 char * TrajetCompose::getDepart() const
 {
@@ -47,30 +47,19 @@ void TrajetCompose::Afficher() const
 
 //-------------------------------------------- Constructeurs - destructeur
 
-
-TrajetCompose::TrajetCompose (TabTrajet & tab)
-// Algorithme :
-//
+TrajetCompose::TrajetCompose (TabTrajet * tab)
 {
 #ifdef MAP
     cout << "Appel au constructeur de <TrajetCompose>" << endl;
 #endif
-    t = new TabTrajet(tab);
-
+    t = tab;
 } //----- Fin de TrajetCompose
 
 
 TrajetCompose::~TrajetCompose ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <TrajetCompose>" << endl;
 #endif
     delete t;
 } //----- Fin de ~TrajetCompose
-
-
-//------------------------------------------------------------------ PRIVE
-
-//----------------------------------------------------- Méthodes protégées

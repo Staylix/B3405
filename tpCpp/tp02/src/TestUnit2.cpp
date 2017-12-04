@@ -8,10 +8,24 @@ using namespace std;
 #include "Catalogue.h"
 
 
-int main()
+void test2()
 {
     Catalogue *MonCatalogue = new Catalogue();
     //Catalogue MonCatalogue();
+
+    const Trajet * pTS1 = new TrajetSimple((char *)"Lyon", (char *)"Paris", (char *)"Voiture");
+    const Trajet * pTS2 = new TrajetSimple((char *)"Grenoble", (char *)"Lyon", (char *)"Voiture");
+    const Trajet * pTS3 = new TrajetSimple((char *)"Grenoble", (char *)"Saint-Etienne", (char *)"Voiture");
+    const Trajet * pTS4 = new TrajetSimple((char *)"Saint-Etienne", (char *)"Paris", (char *)"Voiture");
+    const Trajet * pTS5 = new TrajetSimple((char *)"Saint-Etienne", (char *)"Lyon", (char *)"Voiture");
+
+    MonCatalogue->AjouterTrajet(pTS1);
+    MonCatalogue->AjouterTrajet(pTS2);
+    MonCatalogue->AjouterTrajet(pTS3);
+    MonCatalogue->AjouterTrajet(pTS4);
+    MonCatalogue->AjouterTrajet(pTS5);
+
+    MonCatalogue->Afficher();
 
 //--------- ts1
     const TrajetSimple* ts1 = new const TrajetSimple((char *)"Saint Egreve", (char *)"Grenoble", (char *)"Hypogriffe");
@@ -28,7 +42,7 @@ int main()
     tc1Tab->Add(tc1T1);
     tc1Tab->Add(tc1T2);
 
-    const TrajetCompose * tc1 = new TrajetCompose(*tc1Tab);
+    const TrajetCompose * tc1 = new TrajetCompose(tc1Tab);
     //tc1->Afficher();
 
 //--------- tc2
@@ -38,21 +52,32 @@ int main()
     tc2Tab->Add(tc2T1);
     tc2Tab->Add(tc2T2);
 
-    const TrajetCompose * tc2 = new TrajetCompose(*tc2Tab);
+    const TrajetCompose * tc2 = new TrajetCompose(tc2Tab);
     //tc2->Afficher();
 
 
-
     MonCatalogue->AjouterTrajet(ts1);
+
     MonCatalogue->AjouterTrajet(ts2);
+
     MonCatalogue->AjouterTrajet(tc1);
+
     MonCatalogue->AjouterTrajet(tc2);
 
-    //MonCatalogue->Afficher();
+    MonCatalogue->AjouterTrajet(tc2);
+
+        MonCatalogue->AjouterTrajet(tc1);
+
+        MonCatalogue->AjouterTrajet(tc2);
+
+
+    MonCatalogue->Afficher();
+
 
     //MonCatalogue->RechercherSimple("Saint Egreve","Lyon");
     MonCatalogue->RechercherAvancee("Saint Egreve","Lyon");
 
+    delete MonCatalogue;
 
 
 //_______________________________________________ L'ancien fichier TestValgrind
@@ -76,5 +101,5 @@ int main()
     delete t2;
     */
 
-    return 0;
+    return;
 }

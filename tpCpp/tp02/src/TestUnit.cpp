@@ -1,10 +1,12 @@
+using namespace std;
+#include <iostream>
+
 #include "TrajetSimple.h"
 #include "TrajetCompose.h"
 #include "Trajet.h"
 #include "TabTrajet.h"
 #include "Catalogue.h"
 
-#include <iostream>
 
 void test()
 {
@@ -21,12 +23,11 @@ void test()
   /*TrajetCompose */
   const Trajet * pTS6 = new TrajetSimple((char *)"Lyon", (char *)"Marseille", (char *)"Voiture");
   const Trajet * pTS7 = new TrajetSimple((char *)"Marseille", (char *)"Paris", (char *)"Voiture");
-  TabTrajet * tt = new TabTrajet;
+  TabTrajet * tt = new TabTrajet();
   tt->Add(pTS6);
   tt->Add(pTS7);
 
-  const Trajet * pTC1 = new TrajetCompose(*tt);
-  // delete tt ?                                                            // TO Check !
+  const Trajet * pTC1 = new TrajetCompose(tt);
 
   c1->AjouterTrajet(pTC1);
 

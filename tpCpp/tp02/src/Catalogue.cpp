@@ -18,8 +18,6 @@ using namespace std;
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
 
-//------------------------------------------------------------- Constantes
-
 //----------------------------------------------------------------- PUBLIC
 
 //----------------------------------------------------- Méthodes publiques
@@ -40,7 +38,7 @@ void Catalogue::Afficher() const
       }
       else
       {
-        cout << " is null..." << endl;
+        cout << "null pointer..." << endl;
       }
     }
     cout << endl;
@@ -58,6 +56,7 @@ void Catalogue::AjouterTrajet(const Trajet * T)
 
 void Catalogue::RechercherSimple(const char * depart, const char * arrivee) const
 {
+    cout << endl << "******************************************" << endl;
     cout << "Parcours directs disponibles pour faire " << depart << " --> " << arrivee << " :" << endl;
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
@@ -66,10 +65,12 @@ void Catalogue::RechercherSimple(const char * depart, const char * arrivee) cons
             catalog->Get(i)->Afficher();
         }
     }
+    cout << "******************************************" << endl << endl;
 }
 
 void Catalogue::RechercherAvancee(const char * depart, const char * arrivee) const
 {
+    cout << endl << "******************************************" << endl;
     cout << "Parcours disponibles pour faire " << depart << " --> " << arrivee << " :" << endl << endl;
     int * utilise = new int[catalog->GetUtilise()];
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
@@ -84,18 +85,15 @@ void Catalogue::RechercherAvancee(const char * depart, const char * arrivee) con
             this->recure(utilise, 2, i, arrivee);
         }
     }
-    cout << "******************************************" << endl;
+    cout << "******************************************" << endl << endl;
     delete [] utilise;
 }
-
 
 
 
 //-------------------------------------------- Constructeurs - destructeur
 
 Catalogue::Catalogue ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au constructeur de <Catalogue>" << endl;
@@ -105,8 +103,6 @@ Catalogue::Catalogue ( )
 
 
 Catalogue::~Catalogue ( )
-// Algorithme :
-//
 {
 #ifdef MAP
     cout << "Appel au destructeur de <Catalogue>" << endl;
@@ -156,8 +152,7 @@ void Catalogue::AfficherParcours(int utilise[]) const
     cout << endl;
 }
 
-int Catalogue::max(int utilise[]) const       // On sait que tab (qui sera utilise) est de la taille de catalog
-// Cette méthode va servir pour afficher un parcours trouvé
+int Catalogue::max(int utilise[]) const       // On sait que utilise est de la taille de catalog
 {
     int maxi = 0;
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
