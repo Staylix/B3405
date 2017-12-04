@@ -1,5 +1,5 @@
 /*************************************************************************
-                           TrajetCompose  -  description
+                           TrajetCompose  -  Interface de TrajetCompose
                              -------------------
     début                : $DATE$
     copyright            : (C) $YEAR$ par $AUTHOR$
@@ -12,8 +12,10 @@
 
 //------------------------------------------------------------------------
 // Rôle du module <TrajetCompose>
-//
-//
+// Manipule les trajets composés :
+//      Création et destruction de trajets composés
+//      Geter de depart et arrivée
+//      Affichage du trajet
 //------------------------------------------------------------------------
 
 /////////////////////////////////////////////////////////////////  INCLUDE
@@ -30,12 +32,12 @@ class TrajetCompose : public Trajet {
 //---------------------------------------------------- Fonctions publiques
     virtual char * getDepart() const;
     virtual char * getArrivee() const;
-    // Mode d'emploi :
-    //      Renvoie le départ ou l'arrivée
+    // Contrat :
+    //      Renvoie le départ ou l'arrivée du trajet appelant la méthode
 
     virtual void Afficher() const;
-    // Mode d'emploi :
-    //      Affiche le Trajet
+    // Contrat :
+    //      Affiche le trajet appelant la méthode
 
 //---------------------------------------------------- Constructor and Destructor
 
@@ -48,5 +50,3 @@ class TrajetCompose : public Trajet {
 
 };
 #endif // TrajetCompose_H
-
-

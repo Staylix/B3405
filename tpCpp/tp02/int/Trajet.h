@@ -14,7 +14,7 @@
 //------------------------------------------------------------------------
 // Rôle du module <Trajet>
 // Déclare les méthodes implémentées dans les classes enfants
-// 
+//
 //------------------------------------------------------------------------
 
 /////////////////////////////////////////////////////////////////  INCLUDE
@@ -35,16 +35,16 @@ class Trajet {
 //
 
 public:
-    
+
     virtual ~Trajet() {};
 
     virtual char * getDepart() const = 0;
     virtual char * getArrivee() const = 0;
-    // Mode d'emploi :
-    //      Renvoie le départ ou l'arrivée
+    // Contrat :
+    //      Renvoie le départ ou l'arrivée du trajet appelant la méthode
 
     virtual void Afficher() const = 0;
-    // Mode d'emploi :
-    //      Affiche le Trajet
+    // Contrat :
+    //      Affiche le trajet appelant la méthode
 };
 #endif // Trajet_H

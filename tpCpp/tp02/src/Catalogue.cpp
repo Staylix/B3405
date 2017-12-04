@@ -28,13 +28,12 @@ using namespace std;
 void Catalogue::Afficher() const
 {
   unsigned int size = catalog->GetUtilise();
-#if MAP
-  cout << "Catalogue::Afficher --- Taille catalogue = " << size << endl;
-#endif
-  if (size > 0 ) {
+  if (size > 0 )
+  {
+    cout << "Le catalogue contient " << size << " trajets :" << endl;
     for (unsigned int i = 0; i < size; i++)
     {
-      cout << i;
+      cout << i+1 << " - ";
       if (catalog->Get(i) != nullptr)
       {
         catalog->Get(i)->Afficher();
@@ -44,6 +43,11 @@ void Catalogue::Afficher() const
         cout << " is null..." << endl;
       }
     }
+    cout << endl;
+  }
+  else
+  {
+      cout << "Le catalogue est vide..." << endl;
   }
 }
 
@@ -54,7 +58,7 @@ void Catalogue::AjouterTrajet(const Trajet * T)
 
 void Catalogue::RechercherSimple(const char * depart, const char * arrivee) const
 {
-    cout << "Parcours disponible pour faire" << depart << "-->" << arrivee << " :" << endl;
+    cout << "Parcours directs disponibles pour faire " << depart << " --> " << arrivee << " :" << endl;
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
         if ( !strcmp(depart, catalog->Get(i)->getDepart()) && !strcmp(arrivee, catalog->Get(i)->getArrivee()))
@@ -66,7 +70,7 @@ void Catalogue::RechercherSimple(const char * depart, const char * arrivee) cons
 
 void Catalogue::RechercherAvancee(const char * depart, const char * arrivee) const
 {
-    cout << "Parcours disponible pour faire " << depart << " --> " << arrivee << " :" << endl << endl;
+    cout << "Parcours disponibles pour faire " << depart << " --> " << arrivee << " :" << endl << endl;
     int * utilise = new int[catalog->GetUtilise()];
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
