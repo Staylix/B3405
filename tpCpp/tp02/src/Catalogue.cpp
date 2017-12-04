@@ -28,7 +28,7 @@ void Catalogue::Afficher() const
   unsigned int size = catalog->GetUtilise();
   if (size > 0 )
   {
-    cout << "Le catalogue contient " << size << " trajets :" << endl;
+    cout << endl << "Le catalogue contient " << size << " trajets :" << endl;
     for (unsigned int i = 0; i < size; i++)
     {
       cout << i+1 << " - ";
@@ -149,7 +149,6 @@ void Catalogue::AfficherParcours(int utilise[]) const
             }
         }
     }
-    cout << endl;
 }
 
 int Catalogue::max(int utilise[]) const       // On sait que utilise est de la taille de catalog

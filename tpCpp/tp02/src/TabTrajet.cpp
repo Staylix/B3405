@@ -37,7 +37,6 @@ void TabTrajet::Add ( const Trajet * t )
   }
   this->listTrajet[this->utilise] = t;
   this->utilise++;
-  cout << "Trajet ajouté !" << endl;
   return;
 }
 

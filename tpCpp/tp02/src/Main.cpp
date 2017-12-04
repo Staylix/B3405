@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cstring>
 using namespace std;
 
 #include "TrajetSimple.h"
@@ -9,9 +10,8 @@ using namespace std;
 
 //----------TESTS
 #include "TestUnit.h"
-#include "TestUnit2.h"
 
-
+//----------Constante
 #define MAX 100
 
 
@@ -26,17 +26,15 @@ static void print_option() {
 
 int main()
 {
-  test2();
-  test();
+  //test();
 
   Catalogue *MonCatalogue = new Catalogue();
-
 
   cout << "Bonjour et bienvenu dans votre agence de voyage !" << endl;
   cout << "Que voulez vous faire ?" << endl << endl;
   print_option();
 
-  unsigned int choix = 10;
+  unsigned int choix = 50;
   unsigned int nbTrajets;
   char * depart = new char[MAX];
   char * arrivee = new char[MAX];
@@ -46,7 +44,7 @@ int main()
   cin >> choix;
   while (choix != 0)
   {
-    if (choix == 1)
+    if (choix == 1)     // Ajout de trajet simple
     {
       cout << "Veulliez indiquer le départ, l'arrivée et le moyen de transport de votre trajet :" << endl;
       cin >> depart;
@@ -54,30 +52,47 @@ int main()
       cin >> moyen;
       const TrajetSimple * trajet = new const TrajetSimple(depart, arrivee, moyen);
       MonCatalogue->AjouterTrajet(trajet);
+      cout << "Trajet ajouté !" << endl;
     }
-    if (choix == 2)
+
+    if (choix == 2)     // Ajout de trajet composé
     {
       cout << "Combien de trajets simples composent votre trajet ?" << endl;
       cin >> nbTrajets;
       TabTrajet * tab = new TabTrajet();
       cout << "Veulliez indiquer le départ, l'arrivée et le moyen de transport de chaque étape :" << endl;
+      bool valide = true;
       for (unsigned int i = 0; i < nbTrajets; i++)
       {
           cin >> depart;
+          if (i > 0 && strcmp(depart, arrivee))
+          {
+              cout << "Votre trajet n'est pas valide..." << endl;
+              valide = false;
+          }
           cin >> arrivee;
           cin >> moyen;
           const TrajetSimple * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
           tab->Add(sousTrajet);
       }
       const TrajetCompose * trajet = new const TrajetCompose(tab);
-      MonCatalogue->AjouterTrajet(trajet);
-      cout << "Trajet ajouté !" << endl;
+      if (valide)
+      {
+          MonCatalogue->AjouterTrajet(trajet);
+          cout << "Trajet ajouté !" << endl;
+      }
+      else
+      {
+          delete trajet;
+      }
     }
-    if (choix == 3)
+
+    if (choix == 3)     // Affichage du catalogue
     {
       MonCatalogue->Afficher();
     }
-    if (choix == 4)
+
+    if (choix == 4)     // Recherche simple
     {
       cout << "Veulliez indiquer le départ et l'arrivée de votre voyage :" << endl;
       cin >> depart;
@@ -85,7 +100,8 @@ int main()
       MonCatalogue->RechercherSimple(depart, arrivee);
       cout << "A vous de choisir !" << endl;
     }
-    if (choix == 5)
+
+    if (choix == 5)     // Recherche avancée
     {
         cout << "Veulliez indiquer le départ et l'arrivée de votre voyage :" << endl;
         cin >> depart;
