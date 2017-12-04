@@ -12,8 +12,10 @@
 
 //------------------------------------------------------------------------
 // Rôle du module <TrajetSimple>
-//
-//
+// Manipule les trajets composés :
+//      Création et destruction de trajets simples
+//      Geter de depart et arrivée
+//      Affichage du trajet
 //------------------------------------------------------------------------
 
 /////////////////////////////////////////////////////////////////  INCLUDE
@@ -39,7 +41,12 @@ class TrajetSimple : public Trajet {
 
     virtual char * getDepart() const;
     virtual char * getArrivee() const;
+    // Contrat :
+    //      Renvoie le départ ou l'arrivée du trajet appelant la méthode
+
     virtual void Afficher() const;
+    // Contrat :
+    //      Affiche le trajet appelant la méthode
 
     protected:
       char * depart;
@@ -48,5 +55,3 @@ class TrajetSimple : public Trajet {
 
 };
 #endif // TrajetSimple_H
-
-

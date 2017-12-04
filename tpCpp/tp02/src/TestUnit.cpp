@@ -18,15 +18,17 @@ void test()
   const Trajet * pTS4 = new TrajetSimple((char *)"Saint-Etienne", (char *)"Paris", (char *)"Voiture");
   const Trajet * pTS5 = new TrajetSimple((char *)"Saint-Etienne", (char *)"Lyon", (char *)"Voiture");
 
-  //TrajetCompose
-  /*const Trajet * pTS6 = new TrajetSimple((char *)"Lyon", (char *)"Marseille", (char *)"Voiture");
+  /*TrajetCompose */
+  const Trajet * pTS6 = new TrajetSimple((char *)"Lyon", (char *)"Marseille", (char *)"Voiture");
   const Trajet * pTS7 = new TrajetSimple((char *)"Marseille", (char *)"Paris", (char *)"Voiture");
-  TabTrajet tt; 
-  tt.Add(pTS6);
-  tt.Add(pTS7);
+  TabTrajet * tt = new TabTrajet;
+  tt->Add(pTS6);
+  tt->Add(pTS7);
 
-  const Trajet * pTC1 = new TrajetCompose(tt);
-  c1->AjouterTrajet(pTC1);*/
+  const Trajet * pTC1 = new TrajetCompose(*tt);
+  // delete tt ?                                                            // TO Check !
+
+  c1->AjouterTrajet(pTC1);
 
   c1->AjouterTrajet(pTS1);
   c1->AjouterTrajet(pTS2);

@@ -13,7 +13,10 @@
 
 //------------------------------------------------------------------------
 // Rôle du module <Catalogue>
-// Gere le catalogue, Ajouter des trajets, Afficher le catalogue, Rechercher les parcours
+// Gere le catalogue :
+//      Ajouter des trajets
+//      Afficher le catalogue
+//      Rechercher les parcours (simple ou avancée)
 //
 //------------------------------------------------------------------------
 
@@ -24,6 +27,7 @@
 //------------------------------------------------------------- Constantes
 
 //------------------------------------------------------------------ Types
+
 
 class Catalogue {
 //////////////////////////////////////////////////////////////////  PUBLIC
@@ -36,28 +40,28 @@ class Catalogue {
 public:
 
     void Afficher() const;
-    // Mode d'emploi :
+    // Contrat :
     //      Affiche le catalogue des Trajets
 
     void AjouterTrajet(const Trajet * T);
     // Contrat :
-    //      Lis l'entrée standard
-    //      Cree l'objet adequat: TrajetSimple ou TrajetCompose
-    //      et l'ajoute au catalogue
+    //      Ajoute un trajet (simple ou composé) au catalogue
+    //      en utilisant la fonction Add de la classe TabTrajet
+
 
     void RechercherSimple(const char *, const char *) const;
-    // Mode d'emploi :
-    //      Lis l'entrée standard pour récupérer la ville de départ et celle d'arrivée
-    //      Affiche les parcours correspondant à la demande utilisateur si possible
+    // Contrat :
+    //      Affiche les trajets (simples ou composés) dont le départ et l'arrivée
+    //      correspondent aux paramètres
 
     void RechercherAvancee(const char *, const char *) const;
-    // Mode d'emploi :
-    //      Lis l'entrée standard pour récupérer la ville de départ et celle d'arrivée
-    //      Affiche les parcours correspondant multiples à la demande utilisateur si possible
+    // Contrat :
+    //      Affiche les parcours réalisables à partir des trajets du catalogue,
+    //      dont le départ et l'arrivée correspondent aux paramètres
 
 //---------------------------------------------------- Constructor and Desctructor
 
-    Catalogue();
+    Catalogue();                // Constructeur
     virtual ~Catalogue();
 
 
@@ -65,9 +69,23 @@ protected:
     TabTrajet * catalog;
 
     int max(int tab[]) const;
-    void AfficherParcours(int utilise[]) const;
-    void recure(int utilise[], int numeroTrajet, int trajetPrecedent , const char * arriveeFinale) const;
+    // Contrat :
+    //      Renvoie l'entier maximal parmis les éléments du tableau passé en paramètre
 
+    void AfficherParcours(int utilise[]) const;
+    // Contrat :
+    //      Affiche le parcours composé des trajets décrits par le tableau passé en paramètre
+
+    void recure(int utilise[], int numeroTrajet, int trajetPrecedent , const char * arriveeFinale) const;
+    // Mode d'emploi :
+    //      utilise : Tableau représentant le parcours courant
+    //      numeroTrajet : Numéro du trajet dans le parcours courant
+    //      trajetPrecedent : Indice du trajet précédent dans le Catalogue
+    //      arriveeFinale : Arrivee demandée par le client
+    // Contrat :
+    //      Fonction récursive qui permet de tester tous les parcours réréalisables
+    //      à partir des trajets du catalogue, partant du départ demandé
+    //      et qui appelle l'affichage lorsque le parcours arrive à destination
 };
 
 #endif // Catalogue_H

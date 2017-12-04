@@ -97,7 +97,7 @@ TabTrajet::~TabTrajet ( )
 #ifdef MAP
     cout << "Appel au destructeur de <TabTrajet>" << endl;
 #endif
-    
+
     for (unsigned int i = 0; i < utilise; i++)
     {
         if(listTrajet[i] != nullptr)
@@ -117,7 +117,7 @@ void TabTrajet::realloc()
     const Trajet** newList = new const Trajet*[max*2];
     for (unsigned int i = 0; i < utilise; i++)
     {
-        listTrajet[i] = listTrajet[i];
+        newList[i] = listTrajet[i];
     }
     listTrajet = newList;
     delete [] listTrajet;

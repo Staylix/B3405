@@ -13,7 +13,11 @@
 
 //------------------------------------------------------------------------
 // Rôle du module <TabTrajet>
-// Stocke un tableau dynamique de Trajet * et se réalloue automatiquement
+// Stocke un tableau dynamique de Trajet *
+//      Se réalloue automatiquement
+//      Gère l'ajout de TrajetSimple
+//      Dispose de Geters pour sa taille et ses trajets par indice
+//
 //------------------------------------------------------------------------
 
 /////////////////////////////////////////////////////////////////  INCLUDE
@@ -36,14 +40,16 @@ class TabTrajet {
 public:
 
     void Add ( const Trajet * t );
-    // Mode d'emploi :
-    //      Ajoute à la fin du tableau le pointeur de l'élément passé en paramètre
+    // Contrat :
+    //      Ajoute à la fin du tableau le pointeur de trajet passé en paramètre
 
     const Trajet * Get ( unsigned int i ) const;
-    // Mode d'emploi :
-    //      Renvoi l'objet positionné à la i-ème case du tableau
+    // Contrat :
+    //      Renvoi le pointeur de trajet positionné à la i-ème case du tableau
 
     unsigned int GetUtilise() const;
+    // Contrat :
+    //      Renvoi le nombre de trajet contenu de le tableau
 
     TabTrajet ( const TabTrajet & unTabTrajet );            // Constructeur de copie
     TabTrajet();                                            // Constructeur
