@@ -14,7 +14,7 @@ void test()
   //TrajetSimples
   const Trajet * pTS1 = new TrajetSimple((char *)"Lyon", (char *)"Paris", (char *)"Voiture");
   const Trajet * pTS2 = new TrajetSimple((char *)"Grenoble", (char *)"Lyon", (char *)"Voiture");
-  const Trajet * pTS3 = new TrajetSimple((char *)"Grenoble", (char *)"Sant-Etienne", (char *)"Voiture");
+  const Trajet * pTS3 = new TrajetSimple((char *)"Grenoble", (char *)"Saint-Etienne", (char *)"Voiture");
   const Trajet * pTS4 = new TrajetSimple((char *)"Saint-Etienne", (char *)"Paris", (char *)"Voiture");
   const Trajet * pTS5 = new TrajetSimple((char *)"Saint-Etienne", (char *)"Lyon", (char *)"Voiture");
 
@@ -36,6 +36,7 @@ void test()
 
   c1->Afficher();
 
+  c1->RechercherAvancee((const char *)"Grenoble", (const char *)"Paris");
 
   delete c1;
 }
