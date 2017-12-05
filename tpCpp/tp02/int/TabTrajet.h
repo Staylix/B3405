@@ -58,8 +58,6 @@ protected:
     unsigned int max;
     unsigned int utilise;
     const Trajet** listTrajet;
-
-private:
     void realloc ();
 
 };
