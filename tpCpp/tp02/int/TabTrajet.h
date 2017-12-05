@@ -57,6 +57,7 @@ public:
     //      Renvoi le nombre de trajet contenu de le tableau
 
 //------------------------------------------------- Constructeur et Destructeur
+    TabTrajet();
     virtual ~TabTrajet();
 
 protected:
