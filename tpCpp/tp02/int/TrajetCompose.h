@@ -42,6 +42,12 @@ class TrajetCompose : public Trajet {
 //---------------------------------------------------- Constructor and Destructor
 
     TrajetCompose(TabTrajet * t);
+    // Contrat :
+    //      Crée un TrajetCompose à partie d'un TabTrajet composé de TrajetSimple
+    // Mode d'emploi :
+    //      t un TabTrajet alloué dynamiquement, non deleted avant la fin de vie
+    //      du TrajetCompose courant
+
     virtual ~TrajetCompose ();
 
     protected:

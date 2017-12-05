@@ -31,7 +31,6 @@
 
 class TabTrajet {
 //////////////////////////////////////////////////////////////////  PUBLIC
-//---------------------------------------------------- Fonctions publiques
 // type Nom ( liste de paramètres );
 // Mode d'emploi :
 //
@@ -39,19 +38,25 @@ class TabTrajet {
 //
 public:
 
+//---------------------------------------------------- Fonctions publiques
     void Add ( const Trajet * t );
     // Contrat :
     //      Ajoute à la fin du tableau le pointeur de trajet passé en paramètre
+    // Mode d'emploi:
+    //      t un Trajet alloué, non deleted avant la fin de vie du TabTrajet
 
     const Trajet * Get ( unsigned int i ) const;
     // Contrat :
-    //      Renvoi le pointeur de trajet positionné à la i-ème case du tableau
+    //      Renvoi le pointeur de trajet positionné à la i-ème case du tableau,
+    //      nullptr si i > utilise
+    // Mode d'emploi:
+    //      i un int positif inférieur à la taille de TabTraj
 
     unsigned int GetUtilise() const;
     // Contrat :
     //      Renvoi le nombre de trajet contenu de le tableau
 
-    TabTrajet();                                            // Constructeur
+//------------------------------------------------- Constructeur et Destructeur
     virtual ~TabTrajet();
 
 protected:
@@ -59,6 +64,8 @@ protected:
     unsigned int utilise;
     const Trajet** listTrajet;
     void realloc ();
+    // Contrat :
+    //      Double la taille du tableau contenant les Trajet *
 
 };
 #endif // TabTrajet_H

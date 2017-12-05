@@ -47,17 +47,23 @@ public:
     // Contrat :
     //      Ajoute un trajet (simple ou composé) au catalogue
     //      en utilisant la fonction Add de la classe TabTrajet
+    // Mode d'emploi
+    //      T un trajet alloué dans le tas, non deleted avant la fin de vie du Catalogue
 
 
-    void RechercherSimple(const char *, const char *) const;
+    void RechercherSimple(const char * dep, const char *arr) const;
     // Contrat :
     //      Affiche les trajets (simples ou composés) dont le départ et l'arrivée
     //      correspondent aux paramètres
+    // Mode d'emploi:
+    //      dep et arr des lieux existants dans le catalogue
 
-    void RechercherAvancee(const char *, const char *) const;
+    void RechercherAvancee(const char *dep, const char *arr) const;
     // Contrat :
     //      Affiche les parcours réalisables à partir des trajets du catalogue,
     //      dont le départ et l'arrivée correspondent aux paramètres
+    // Mode d'emploi:
+    //      dep et arr des lieux existants dans le catalogue
 
 //---------------------------------------------------- Constructor and Desctructor
 
@@ -75,6 +81,8 @@ protected:
     void AfficherParcours(int utilise[]) const;
     // Contrat :
     //      Affiche le parcours composé des trajets décrits par le tableau passé en paramètre
+    // Mode d'emploi:
+    //       utilise un int[] représentant le parcours à afficher, les valeurs correspondant à l'ordre d'affichage
 
     void recure(int utilise[], int numeroTrajet, int trajetPrecedent , const char * arriveeFinale) const;
     // Mode d'emploi :

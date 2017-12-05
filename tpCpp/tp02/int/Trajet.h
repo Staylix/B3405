@@ -27,7 +27,6 @@
 
 class Trajet {
 //////////////////////////////////////////////////////////////////  PUBLIC
-//---------------------------------------------------- Fonctions publiques
 // type Nom ( liste de paramètres );
 // Mode d'emploi :
 //
@@ -38,6 +37,7 @@ public:
 
     virtual ~Trajet() {};
 
+//---------------------------------------------------- Fonctions publiques
     virtual char * getDepart() const = 0;
     virtual char * getArrivee() const = 0;
     // Contrat :

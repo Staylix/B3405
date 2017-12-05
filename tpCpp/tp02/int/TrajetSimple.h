@@ -27,8 +27,6 @@
 
 class TrajetSimple : public Trajet {
     public:
-//////////////////////////////////////////////////////////////////  PUBLIC
-//---------------------------------------------------- Fonctions publiques
 // type Nom ( liste de paramètres );
 // Mode d'emploi :
 //
@@ -37,7 +35,13 @@ class TrajetSimple : public Trajet {
 //---------------------------------------------------- Constructor and Destructor
 
     TrajetSimple(char * dep, char * arrivee, char * mt);
+    // Contrat :
+    //      Construit un TrajetSimple à partir des arguments qui seront copiés
+    //      en profondeur dans le constructeur
     virtual ~TrajetSimple ();
+
+
+//---------------------------------------------------- Fonctions publiques
 
     virtual char * getDepart() const;
     virtual char * getArrivee() const;
