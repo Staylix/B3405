@@ -26,7 +26,7 @@ static void print_option() {
 
 int main()
 {
-  //test();
+  test();
 
   Catalogue *MonCatalogue = new Catalogue();
 

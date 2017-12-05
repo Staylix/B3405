@@ -51,7 +51,6 @@ public:
     // Contrat :
     //      Renvoi le nombre de trajet contenu de le tableau
 
-    TabTrajet ( const TabTrajet & unTabTrajet );            // Constructeur de copie
     TabTrajet();                                            // Constructeur
     virtual ~TabTrajet();
 

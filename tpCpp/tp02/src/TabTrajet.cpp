@@ -56,22 +56,7 @@ unsigned int TabTrajet::GetUtilise() const
 }
 
 
-//-------------------------------------------- Constructeurs - destructeur
-
-TabTrajet::TabTrajet ( const TabTrajet & unTabTrajet )  //constructeur de copie
-{
-#ifdef MAP
-    cout << "Appel au constructeur de copie de <TabTrajet>" << endl;
-#endif
-    max = unTabTrajet.max;
-    utilise = unTabTrajet.utilise;
-    listTrajet = new const Trajet*[max];
-    for (unsigned int i = 0; i < utilise; i++)
-    {
-        listTrajet[i] = unTabTrajet.listTrajet[i];
-    }
-} //----- Fin de TabTrajet (constructeur de copie)
-
+//-------------------------------------------- Constructeurs - destructeurs
 
 TabTrajet::TabTrajet ( )
 {
