@@ -1,15 +1,13 @@
 /*************************************************************************
-                           Catalogue  -  description
+                            Catalogue.cpp
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 15/11/2017
+    auteurs              : B3405 - Etienne et Grégoir
 *************************************************************************/
 
-//---------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp) ------------
+//----------- Réalisation de la classe <Catalogue> (fichier Catalogue.cpp)
 
 //---------------------------------------------------------------- INCLUDE
-
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
@@ -19,34 +17,31 @@ using namespace std;
 #include "Catalogue.h"
 
 //----------------------------------------------------------------- PUBLIC
-
 //----------------------------------------------------- Méthodes publiques
-
-
 void Catalogue::Afficher() const
 {
-  unsigned int size = catalog->GetUtilise();
-  if (size > 0 )
-  {
-    cout << endl << "Le catalogue contient " << size << " trajets :" << endl;
-    for (unsigned int i = 0; i < size; i++)
+    unsigned int size = catalog->GetUtilise();
+    if (size > 0 )
     {
-      cout << i+1 << " - ";
-      if (catalog->Get(i) != nullptr)
-      {
-        catalog->Get(i)->Afficher();
-      }
-      else
-      {
-        cout << "null pointer..." << endl;
-      }
+        cout << endl << "Le catalogue contient " << size << " trajets :" << endl;
+        for (unsigned int i = 0; i < size; i++)
+        {
+            cout << i+1 << " - ";
+            if (catalog->Get(i) != nullptr)
+            {
+                catalog->Get(i)->Afficher();
+            }
+            else
+            {
+                cout << "null pointer..." << endl;
+            }
+        }
+        cout << endl;
     }
-    cout << endl;
-  }
-  else
-  {
-      cout << "Le catalogue est vide..." << endl;
-  }
+    else
+    {
+        cout << "Le catalogue est vide..." << endl;
+    }
 }
 
 void Catalogue::AjouterTrajet(const Trajet * T)
@@ -90,9 +85,7 @@ void Catalogue::RechercherAvancee(const char * depart, const char * arrivee) con
 }
 
 
-
 //-------------------------------------------- Constructeurs - destructeur
-
 Catalogue::Catalogue ( )
 {
 #ifdef MAP
@@ -100,7 +93,6 @@ Catalogue::Catalogue ( )
 #endif
     catalog = new TabTrajet();
 } //----- Fin de Catalogue
-
 
 Catalogue::~Catalogue ( )
 {
@@ -111,15 +103,12 @@ Catalogue::~Catalogue ( )
 } //----- Fin de ~Catalogue
 
 
-
 //------------------------------------------------------------------ PRIVE
-
 //----------------------------------------------------- Méthodes protégées
-
 
 void Catalogue::recure(int utilise[], int numeroTrajet, int trajetPrecedent , const char * arriveeFinale) const
 {
-    if ( !strcmp(catalog->Get(trajetPrecedent)->getArrivee(), arriveeFinale) )     // Si on a trouvé un parcours
+    if (!strcmp(catalog->Get(trajetPrecedent)->getArrivee(), arriveeFinale))
     {
         this->AfficherParcours(utilise);
         return;
@@ -151,7 +140,7 @@ void Catalogue::AfficherParcours(int utilise[]) const
     }
 }
 
-int Catalogue::max(int utilise[]) const       // On sait que utilise est de la taille de catalog
+int Catalogue::max(int utilise[]) const // On sait que utilise est de la taille de catalog
 {
     int maxi = 0;
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)

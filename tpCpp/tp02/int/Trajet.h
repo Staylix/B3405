@@ -1,40 +1,26 @@
 /*************************************************************************
-                           Trajet.h  -  Interface de TrajetSimple et TrajetCompose
-                                        Classe purement abstraite
+                    Trajet.h  -  Interface de TrajetSimple et TrajetCompose
+                                 Classe purement abstraite
                            -------------------
     début                : 15/11/2017
-    copyright            : (C) $YEAR$ par Greg & Etienne
-    e-mail               : $EMAIL$
+    auteurs              : B3405 - Etienne et Grégoire
 *************************************************************************/
 
-//---------- Interface du module <Trajet> (fichier Trajet.h) -------------------
+//---------- Interface du module <Trajet> (fichier Trajet.h) -------------
 #if ! defined ( Trajet_H )
 #define Trajet_H
 
 //------------------------------------------------------------------------
 // Rôle du module <Trajet>
-// Déclare les méthodes implémentées dans les classes enfants
-//
+// Déclare les méthodes implémentées dans les classes enfants :
+// TrajetSimple et TrajetCompose
 //------------------------------------------------------------------------
-
-/////////////////////////////////////////////////////////////////  INCLUDE
-//--------------------------------------------------- Interfaces utilisées
-
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 
 class Trajet {
-//////////////////////////////////////////////////////////////////  PUBLIC
-// type Nom ( liste de paramètres );
-// Mode d'emploi :
-//
-// Contrat :
-//
-
 public:
 
+//------------------------------------------------------------- Destructor
     virtual ~Trajet() {};
 
 //---------------------------------------------------- Fonctions publiques

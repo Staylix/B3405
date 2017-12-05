@@ -1,3 +1,10 @@
+/*************************************************************************
+                    TestUnit.cpp  -  Implémente le test
+                             -------------------
+    début                : 15/11/2017
+    auteurs              : B3405 - Etienne et Grégoir
+*************************************************************************/
+
 using namespace std;
 #include <iostream>
 
@@ -7,12 +14,10 @@ using namespace std;
 #include "TabTrajet.h"
 #include "Catalogue.h"
 
-
 void test()
 {
   // Catalogue
   Catalogue *c1 = new Catalogue();
-
 
   // Trajets Simples
   const Trajet * pTS1 = new TrajetSimple((char *)"Lyon", (char *)"Paris", (char *)"Voiture");
@@ -32,7 +37,6 @@ void test()
   c1->AjouterTrajet(ts1);
   c1->AjouterTrajet(ts2);
   c1->AjouterTrajet(ts3);
-
 
 
   // Trajets Composés

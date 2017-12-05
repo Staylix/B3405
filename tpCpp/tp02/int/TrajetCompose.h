@@ -1,12 +1,11 @@
 /*************************************************************************
-                           TrajetCompose  -  Interface de TrajetCompose
+                    TrajetCompose.h  -  Interface de TrajetCompose.cpp
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 15/11/2017
+    auteurs              : B3405 - Etienne et Grégoire
 *************************************************************************/
 
-//---------- Interface du module <TrajetCompose> (fichier TrajetCompose.h) -------------------
+//---------- Interface du module <TrajetCompose> (fichier TrajetCompose.h)
 #if ! defined ( TrajetCompose_H )
 #define TrajetCompose_H
 
@@ -22,13 +21,10 @@
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
 #include "TabTrajet.h"
-//------------------------------------------------------------- Constantes
 
-//------------------------------------------------------------------ Types
 
 class TrajetCompose : public Trajet {
-    public:
-//////////////////////////////////////////////////////////////////  PUBLIC
+public:
 //---------------------------------------------------- Fonctions publiques
     virtual char * getDepart() const;
     virtual char * getArrivee() const;
@@ -39,20 +35,19 @@ class TrajetCompose : public Trajet {
     // Contrat :
     //      Affiche le trajet appelant la méthode
 
-//---------------------------------------------------- Constructor and Destructor
-
+//--------------------------------------------- Constructor and Destructor
     TrajetCompose(TabTrajet * t);
     // Contrat :
-    //      Crée un TrajetCompose à partie d'un TabTrajet composé de TrajetSimple
+    //      Crée un TrajetCompose à partie d'un TabTrajet composé de
+    //      TrajetSimple
     // Mode d'emploi :
-    //      t un TabTrajet alloué dynamiquement, non deleted avant la fin de vie
-    //      du TrajetCompose courant
+    //      t un TabTrajet alloué dynamiquement, non deleted avant la
+    //      fin de vie du TrajetCompose courant
 
     virtual ~TrajetCompose ();
 
-    protected:
-      TabTrajet *t;
-
+protected:
+    TabTrajet *t;
 
 };
 #endif // TrajetCompose_H

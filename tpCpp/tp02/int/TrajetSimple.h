@@ -1,12 +1,11 @@
 /*************************************************************************
-                           TrajetSimple  -  description
+                    TrajetSimple.h  -  Interface de TrajetSimple.cpp
                              -------------------
-    début                : $DATE$
-    copyright            : (C) $YEAR$ par $AUTHOR$
-    e-mail               : $EMAIL$
+    début                : 15/11/2017
+    auteurs              : B3405 - Etienne et Grégoire
 *************************************************************************/
 
-//---------- Interface du module <TrajetSimple> (fichier TrajetSimple.h) -------------------
+//------------ Interface du module <TrajetSimple> (fichier TrajetSimple.h)
 #if ! defined ( TrajetSimple_H )
 #define TrajetSimple_H
 
@@ -21,28 +20,12 @@
 /////////////////////////////////////////////////////////////////  INCLUDE
 //--------------------------------------------------- Interfaces utilisées
 #include "Trajet.h"
-//------------------------------------------------------------- Constantes
 
-//------------------------------------------------------------------ Types
 
 class TrajetSimple : public Trajet {
-    public:
-// type Nom ( liste de paramètres );
-// Mode d'emploi :
-//
-// Contrat :
-//
-//---------------------------------------------------- Constructor and Destructor
-
-    TrajetSimple(char * dep, char * arrivee, char * mt);
-    // Contrat :
-    //      Construit un TrajetSimple à partir des arguments qui seront copiés
-    //      en profondeur dans le constructeur
-    virtual ~TrajetSimple ();
-
+public:
 
 //---------------------------------------------------- Fonctions publiques
-
     virtual char * getDepart() const;
     virtual char * getArrivee() const;
     // Contrat :
@@ -52,10 +35,17 @@ class TrajetSimple : public Trajet {
     // Contrat :
     //      Affiche le trajet appelant la méthode
 
-    protected:
-      char * depart;
-      char * arrivee;
-      char * moyen;
+//--------------------------------------------- Constructor and Destructor
+    TrajetSimple(char * dep, char * arrivee, char * mt);
+    // Contrat :
+    //      Construit un TrajetSimple à partir des arguments qui seront
+    //      copiés en profondeur par le constructeur
+    virtual ~TrajetSimple ();
+
+protected:
+    char * depart;
+    char * arrivee;
+    char * moyen;
 
 };
 #endif // TrajetSimple_H

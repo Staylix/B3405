@@ -1,13 +1,12 @@
 /*************************************************************************
-                           TabTrajet.h  -   Interface de TabTrajet.cpp
-                                            Un tableau Dynamique de Trajet *
+                    TabTrajet.h  -   Interface de TabTrajet.cpp
+                                     Un tableau Dynamique de Trajet*
                            -------------------
     début                : 15/11/2017
-    copyright            : (C) $YEAR$ par Greg & Etienne
-    e-mail               : $EMAIL$
+    auteurs              : B3405 - Etienne et Grégoire
 *************************************************************************/
 
-//---------- Interface du module <TabTrajet> (fichier TabTrajet.h) -------------------
+//---------- Interface du module <TabTrajet> (fichier TabTrajet.h) -------
 #if ! defined ( TabTrajet_H )
 #define TabTrajet_H
 
@@ -17,25 +16,14 @@
 //      Se réalloue automatiquement
 //      Gère l'ajout de TrajetSimple
 //      Dispose de Geters pour sa taille et ses trajets par indice
-//
 //------------------------------------------------------------------------
 
 /////////////////////////////////////////////////////////////////  INCLUDE
 //--------------------------------------------------- Interfaces utilisées
-
 #include "Trajet.h"
 
-//------------------------------------------------------------- Constantes
-
-//------------------------------------------------------------------ Types
 
 class TabTrajet {
-//////////////////////////////////////////////////////////////////  PUBLIC
-// type Nom ( liste de paramètres );
-// Mode d'emploi :
-//
-// Contrat :
-//
 public:
 
 //---------------------------------------------------- Fonctions publiques
@@ -48,17 +36,20 @@ public:
     const Trajet * Get ( unsigned int i ) const;
     // Contrat :
     //      Renvoi le pointeur de trajet positionné à la i-ème case du tableau,
-    //      nullptr si i > utilise
+    //      nullptr si i >= utilise
     // Mode d'emploi:
-    //      i un int positif inférieur à la taille de TabTraj
+    //      i est un int positif inférieur à la taille de TabTrajet
 
     unsigned int GetUtilise() const;
     // Contrat :
     //      Renvoi le nombre de trajet contenu de le tableau
 
-//------------------------------------------------- Constructeur et Destructeur
+//-------------------------------------------- Constructeur et Destructeur
     TabTrajet();
     virtual ~TabTrajet();
+    // Contrat :
+    //      Fais appelle au destructeur adéquat sur chaque
+    //      Trajet qui le compose, puis détruit le tableau
 
 protected:
     unsigned int max;
@@ -66,7 +57,7 @@ protected:
     const Trajet** listTrajet;
     void realloc ();
     // Contrat :
-    //      Double la taille du tableau contenant les Trajet *
+    //      Double la taille du tableau listTrajet contenant les Trajet *
 
 };
 #endif // TabTrajet_H

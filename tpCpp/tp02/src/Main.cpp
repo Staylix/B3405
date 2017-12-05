@@ -1,3 +1,10 @@
+/*************************************************************************
+                    Main.cpp  -  Implémente le menu et appelle les tests
+                             -------------------
+    début                : 15/11/2017
+    auteurs              : B3405 - Etienne et Grégoir
+*************************************************************************/
+
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -14,7 +21,6 @@ using namespace std;
 //----------Constante
 #define MAX 100
 
-
 static void print_option() {
   cout << "\t1 - Ajouter un trajet simple au catalogue" << endl;
   cout << "\t2 - Ajouter un trajet composé au catalogue" << endl;
@@ -29,17 +35,15 @@ int main()
   test();
 
   Catalogue *MonCatalogue = new Catalogue();
-
-  cout << "Bonjour et bienvenu dans votre agence de voyage !" << endl;
-  cout << "Que voulez vous faire ?" << endl << endl;
-  print_option();
-
   unsigned int choix = 50;
   int nbTrajets;
   char * depart = new char[MAX];
   char * arrivee = new char[MAX];
   char * moyen = new char[MAX];
 
+  cout << "Bonjour et bienvenu dans votre agence de voyage !" << endl;
+  cout << "Que voulez vous faire ?" << endl << endl;
+  print_option();
 
   cin >> choix;
   while (choix != 0)
@@ -71,7 +75,7 @@ int main()
             {
                 cout << "Votre trajet n'est pas valide..." << endl;
                 valide = false;
-                i = nbTrajets; //on arrete de lire cin
+                i = nbTrajets; // On arrête de lire cin
             }
             cin >> arrivee;
             cin >> moyen;
@@ -118,7 +122,6 @@ int main()
 
     cout << endl << "Maintenant, que voulez vous faire ?" << endl << endl;
     print_option();
-
     cin >> choix;
   }   // Fin du while
 
