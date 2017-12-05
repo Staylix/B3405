@@ -69,6 +69,7 @@ int main()
           {
               cout << "Votre trajet n'est pas valide..." << endl;
               valide = false;
+              i = nbTrajets; //on arrete de lire cin
           }
           cin >> arrivee;
           cin >> moyen;
@@ -98,7 +99,6 @@ int main()
       cin >> depart;
       cin >> arrivee;
       MonCatalogue->RechercherSimple(depart, arrivee);
-      cout << "A vous de choisir !" << endl;
     }
 
     if (choix == 5)     // Recherche avancée
@@ -107,7 +107,6 @@ int main()
         cin >> depart;
         cin >> arrivee;
         MonCatalogue->RechercherAvancee(depart, arrivee);
-        cout << "A vous de choisir !" << endl;
     }
 
     cout << endl << "Maintenant, que voulez vous faire ?" << endl << endl;
