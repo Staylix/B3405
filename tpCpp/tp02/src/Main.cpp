@@ -59,7 +59,7 @@ int main()
     {
       cout << "Combien de trajets simples composent votre trajet ?" << endl;
       cin >> nbTrajets;
-      if (nbTrajets > 0)
+      if (nbTrajets > 1)
       {
         TabTrajet * tab = new TabTrajet();
         cout << "Veulliez indiquer le départ, l'arrivée et le moyen de transport de chaque étape :" << endl;
@@ -91,7 +91,7 @@ int main()
       }
       else
       {
-        cout << "Ce n'est pas très utiles..." << endl;
+        cout << "Ce n'est pas très utile..." << endl;
       }
     }
 
