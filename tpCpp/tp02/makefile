@@ -5,11 +5,13 @@ DIRBIN = bin/
 DIRHEADERS = int/
 
 TARGET = a.out
+SAVE = demo.txt
 
 #--------------- Linux commands
 MKDIR = @mkdir -p
 RM = @rm -f
 ECHO = @echo
+TOUCH = @touch
 
 #--------------- COMPILATOR
 COMP = @g++ -c
@@ -31,6 +33,7 @@ all: mkdir my_all
 
 mkdir:
 	$(MKDIR) $(DIROBJ) $(DIRBIN)
+	$(TOUCH) $(SAVE)
 
 my_all: $(OBJ)
 	$(ECHO) "Linker de $(OBJ) dans $(DIRBIN)$(TARGET)"
