@@ -19,14 +19,11 @@ using namespace std;
 void test()
 {
   // Catalogue
-  Catalogue *c1 = new Catalogue();
+  //Catalogue *c1 = new Catalogue();
 
   // Trajets Simples
   const TrajetSimple * pTS1 = new TrajetSimple((char *)"Lyon", (char *)"Paris", (char *)"Voiture");
 
-  ofstream o("test.txt", ios::out | ios::app);
-  o << pTS1;
-  cout << typeid(*pTS1).name();
   delete pTS1;
 
   /*
