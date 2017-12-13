@@ -38,6 +38,14 @@ void TrajetSimple::Afficher() const
   cout << depart << " --> " << arrivee << " en " << moyen << endl;
 }
 
+void TrajetSimple::Ecrire(ofstream & os) const
+{
+  os << "TS" << endl;
+  os << depart << endl;
+  os << arrivee << endl;
+  os << moyen << endl;
+}
+
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple (char *dep, char * arr, char * mt)
 {
