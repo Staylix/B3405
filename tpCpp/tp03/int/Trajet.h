@@ -15,7 +15,8 @@
 // Déclare les méthodes implémentées dans les classes enfants :
 // TrajetSimple et TrajetCompose
 //------------------------------------------------------------------------
-
+#include <fstream>
+#include <String>
 
 class Trajet {
 public:
@@ -32,5 +33,6 @@ public:
     virtual void Afficher() const = 0;
     // Contrat :
     //      Affiche le trajet appelant la méthode
+
 };
 #endif // Trajet_H

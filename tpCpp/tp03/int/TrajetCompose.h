@@ -35,6 +35,9 @@ public:
     // Contrat :
     //      Affiche le trajet appelant la méthode
 
+    friend ofstream & operator << (ofstream & os, const TrajetCompose *);
+    friend ifstream & operator >> (ifstream & is, const TrajetCompose *);
+
 //--------------------------------------------- Constructor and Destructor
     TrajetCompose(TabTrajet * t);
     // Contrat :
