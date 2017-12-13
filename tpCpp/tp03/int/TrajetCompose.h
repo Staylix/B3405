@@ -36,7 +36,7 @@ public:
     // Contrat :
     //      Affiche le trajet appelant la méthode
 
-    virtual void Ecrire(ofstream & os);
+    virtual void Ecrire(ofstream & os) const;
 
 //--------------------------------------------- Constructor and Destructor
     TrajetCompose(TabTrajet * t);
