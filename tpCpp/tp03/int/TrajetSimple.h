@@ -36,7 +36,7 @@ public:
     // Contrat :
     //      Affiche le trajet appelant la méthode
 
-    friend ofstream & operator << (ofstream & os, const Trajet & t);
+    friend ofstream & operator << (ofstream & os, const Trajet * t);
 
 //--------------------------------------------- Constructor and Destructor
     TrajetSimple(char * dep, char * arrivee, char * mt);
