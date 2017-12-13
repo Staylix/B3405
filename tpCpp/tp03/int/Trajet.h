@@ -32,6 +32,9 @@ public:
     //      Renvoie le départ ou l'arrivée du trajet appelant la méthode
 
     virtual void Afficher() const = 0;
+
+    virtual void Ecrire(ofstream & os) = 0;
+
     // Contrat :
     //      Affiche le trajet appelant la méthode
     virtual friend ofstream & operator << (ofstream & os, const Trajet * t) = 0;
