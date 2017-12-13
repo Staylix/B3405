@@ -38,15 +38,6 @@ void TrajetSimple::Afficher() const
   cout << depart << " --> " << arrivee << " en " << moyen << endl;
 }
 
-ofstream & operator << (ofstream & os, const Trajet * t)
-{
-  os << "TS" << endl;
-  os << t->getDepart() << endl;
-  os << t->getArrivee() << endl;
-  os << t->getMoyen() << endl;
-  return os;
-}
-
 //-------------------------------------------- Constructeurs - destructeur
 TrajetSimple::TrajetSimple (char *dep, char * arr, char * mt)
 {

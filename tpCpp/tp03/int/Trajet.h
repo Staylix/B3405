@@ -37,7 +37,6 @@ public:
 
     // Contrat :
     //      Affiche le trajet appelant la méthode
-    virtual friend ofstream & operator << (ofstream & os, const Trajet * t) = 0;
 
 };
 #endif // Trajet_H
