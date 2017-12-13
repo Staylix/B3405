@@ -16,7 +16,7 @@
 // TrajetSimple et TrajetCompose
 //------------------------------------------------------------------------
 #include <fstream>
-#include <String>
+#include <string>
 
 class Trajet {
 public:

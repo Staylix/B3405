@@ -40,23 +40,33 @@ void TrajetCompose::Afficher() const
     return;
 }
 
-ofstream & TrajetCompose::operator << (ofstream & os, const Trajet * Traj)
+ofstream & operator << (ofstream & os, const TrajetCompose * Traj)
 {
-    os << TC << t->GetUtilise() << endl;
-    os << getDepart() << endl;
-    os << getArrivee() << endl;
-    for (unsigned int i = 0; i < t->GetUtilise(); i++)
+    os << "TC" << Traj->t->GetUtilise() << endl;
+    os << Traj->getDepart() << endl;
+    os << Traj->getArrivee() << endl;
+    for (unsigned int i = 0; i < Traj->t->GetUtilise(); i++)
     {
-        os << Traj->Get(i)->getDepart() << endl;
-        os << Traj->Get(i)->getArrivee() << endl;
-        os << Traj->Get(i)->getMoyen() << endl;
+        os << Traj->t->Get(i)->getDepart() << endl;
+        os << Traj->t->Get(i)->getArrivee() << endl;
+        os << Traj->t->Get(i)->getMoyen() << endl;
     }
+    return os;
 }
-ifstream & TrajetCompose::operator >> (ifstream & is, const Trajet * Traj)
+ifstream & operator >> (ifstream & is, const TrajetCompose * Traj)
 {
-    String str;
+    string str;
     int nb;
     is >> str;
+    if (!str.compare("TC"))
+    {
+
+    }
+    else
+    {
+
+    }
+    return is;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
