@@ -38,11 +38,12 @@ void TrajetSimple::Afficher() const
   cout << depart << " --> " << arrivee << " en " << moyen << endl;
 }
 
-ofstream & TrajetSimple::operator << (ofstream & os, const TrajetSimple & t)
+ofstream & operator << (ofstream & os, const TrajetSimple * t)
 {
   os << "TS" << endl;
-  os << t.getDepart() << endl;
-  os << t.getArrivee() << endl;
+  os << t->getDepart() << endl;
+  os << t->getArrivee() << endl;
+  os << t->getMoyen() << endl;
   return os;
 }
 
