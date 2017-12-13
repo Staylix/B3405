@@ -28,7 +28,6 @@ public:
 //---------------------------------------------------- Fonctions publiques
     virtual char * getDepart() const;
     virtual char * getArrivee() const;
-    virtual char * getMoyen() const;
     // Contrat :
     //      Renvoie le départ ou l'arrivée du trajet appelant la méthode
 
