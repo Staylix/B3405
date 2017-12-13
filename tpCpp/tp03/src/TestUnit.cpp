@@ -24,6 +24,10 @@ void test()
   // Trajets Simples
   const TrajetSimple * pTS1 = new TrajetSimple((char *)"Lyon", (char *)"Paris", (char *)"Voiture");
 
+  ofstream o("text.txt", ios::out | ios::app);
+  pTS1->Ecrire(o);
+  o.close();
+
   delete pTS1;
 
   /*
