@@ -1,0 +1,19 @@
+TS
+Lyon
+Bordeaux
+Train
+
+TC 2
+Lyon
+Paris
+Lyon
+Marseille
+Bateau
+Marseille
+Paris
+Avion
+
+TS
+Lyon
+Paris
+Auto
