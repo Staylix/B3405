@@ -28,12 +28,15 @@ public:
 //---------------------------------------------------- Fonctions publiques
     virtual char * getDepart() const;
     virtual char * getArrivee() const;
+    virtual char * getMoyen() const;
     // Contrat :
     //      Renvoie le départ ou l'arrivée du trajet appelant la méthode
 
     virtual void Afficher() const;
     // Contrat :
     //      Affiche le trajet appelant la méthode
+
+    friend ofstream & operator << (ofstream & os, const Trajet & t);
 
 //--------------------------------------------- Constructor and Destructor
     TrajetSimple(char * dep, char * arrivee, char * mt);

@@ -28,9 +28,22 @@ char * TrajetSimple::getArrivee() const
   return arrivee;
 }
 
+char * TrajetSimple::getMoyen() const
+{
+  return moyen;
+}
+
 void TrajetSimple::Afficher() const
 {
   cout << depart << " --> " << arrivee << " en " << moyen << endl;
+}
+
+ofstream & TrajetSimple::operator << (ofstream & os, const TrajetSimple & t)
+{
+  os << "TS" << endl;
+  os << t.getDepart() << endl;
+  os << t.getArrivee() << endl;
+  return os;
 }
 
 //-------------------------------------------- Constructeurs - destructeur
