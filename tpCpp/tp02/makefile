@@ -33,7 +33,7 @@ all: mkdir my_all
 
 mkdir:
 	$(MKDIR) $(DIROBJ) $(DIRBIN)
-	$(TOUCH) $(SAVE)
+	$(TOUCH) $(DIRBIN)$(SAVE)
 
 my_all: $(OBJ)
 	$(ECHO) "Linker de $(OBJ) dans $(DIRBIN)$(TARGET)"
