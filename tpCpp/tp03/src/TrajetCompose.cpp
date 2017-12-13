@@ -28,6 +28,11 @@ char * TrajetCompose::getArrivee() const
     return t->Get(i-1)->getArrivee();
 }
 
+char * TrajetCompose::getMoyen() const
+{
+    return (char*) "";
+}
+
 void TrajetCompose::Afficher() const
 {
     cout << getDepart() << " ----> " << getArrivee() << " via :" << endl;
