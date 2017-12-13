@@ -21,8 +21,6 @@ using namespace std;
 //----------Constante
 #define MAX 100
 
-string fichier = "demo.txt";
-
 static void print_option()
 {
   cout << "\t1 - Ajouter un trajet simple au catalogue" << endl;
@@ -142,13 +140,7 @@ int main()
         cin >> choix;
         if (choix == 1)
         {
-            ofstream os(fichier, ios::out | ios::app);
-            for (unsigned int i = 0; i < MonCatalogue->catalog->GetUtilise; i++)
-            {
-                MonCatalogue->catalog->Get(i)->Ecrire(os);
-                // Eventuel séparateur : os << "";
-            }
-            os.close();
+            MonCatalogue->Ecrire();
         }
     }
 
@@ -158,33 +150,7 @@ int main()
         cin >> choix;
         if (choix == 1)
         {
-            int nb;
-            is >> moyen;
-            if (!strcmp(moyen, (char*)"TC"))
-            {
-                TabTrajet * tab = new TabTrajet();
-                is >> nb;
-                is >> depart;
-                is >> arrivee;
-                for (unsigned int i = 0; i < nb; i++)
-                {
-                    is >> depart;
-                    is >> arrivee;
-                    is >> moyen;
-                    const Trajet * sousTrajet = new const TrajetSimple(depart,arrivee,moyen);
-                    tab->Add(sousTrajet);
-                }
-                const Trajet * trajet = new const TrajetCompose(tab);
-                MonCatalogue->AjouterTrajet(trajet);
-            }
-            else
-            {
-                is >> depart;
-                is >> arrivee;
-                is >> moyen;
-                const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
-                MonCatalogue->AjouterTrajet(trajet);
-            }
+            MonCatalogue->Lire();
         }
     }
 

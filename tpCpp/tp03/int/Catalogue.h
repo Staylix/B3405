@@ -37,7 +37,7 @@ public:
     // Contrat :
     //      Ajoute un trajet (simple ou composé) au catalogue
     //      en utilisant la fonction Add de la classe TabTrajet
-    // Mode d'emploi
+    // Mode d'emploi :
     //      T est un Trajet alloué dans le tas,
     //      non détruit avant la fin de vie du Catalogue
 
@@ -51,6 +51,31 @@ public:
     //      Affiche les parcours réalisables à partir des trajets du
     //      catalogue, dont le départ et l'arrivée correspondent
     //      aux paramètres
+
+    void Save() const;
+    void Save(string) const;
+    void Save(string, string) const;
+    void Save(int, int) const;
+    // Contrat :
+    //      Cette méthode utilise un flux pour ecrire dans
+    //      un fichier les trajets contenus
+    //      dans le catalogue
+    // Mode d'emploi :
+    //      Le choix des paramètres dépend du type de sauvegarde
+    //      désiré
+
+    void Lire();
+    void Lire(string);
+    void Lire(string, string);
+    void Lire(int, int);
+    // Contrat :
+    //      Cette méthode utilise un flux pour lire dans
+    //      un fichier les trajets et les ajouter
+    //      au catalogue
+    // Mode d'emploi :
+    //      Le choix des paramètres dépend du type de chargement
+    //      désiré
+
 
 //-------------------------------------------- Constructor and Desctructor
 

@@ -15,6 +15,10 @@ using namespace std;
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
+#include "TrajetSimple.h"
+#include "TrajetCompose.h"
+
+string fichier = "demo.txt";
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
@@ -82,6 +86,76 @@ void Catalogue::RechercherAvancee(const char * depart, const char * arrivee) con
     }
     cout << "******************************************" << endl << endl;
     delete [] utilise;
+}
+
+void Catalogue::Save() const
+{
+    ofstream os(fichier, ios::out | ios::app);
+    for (unsigned int i = 0; i < this->catalog->GetUtilise(); i++)
+    {
+        this->catalog->Get(i)->Ecrire(os);
+        // Eventuel séparateur : os << "";
+    }
+    os.close();
+}
+void Catalogue::Save(string) const
+{
+
+}
+void Catalogue::Save(string, string) const
+{
+
+}
+void Catalogue::Save(int, int) const
+{
+
+}
+
+void Catalogue::Lire()
+{
+    string depart;
+    string arrivee;
+    string moyen;
+    ifstream is(fichier, ios::in);
+    unsigned int nb;
+    is >> moyen;
+    if (moyen == "TC")
+    {
+        TabTrajet * tab = new TabTrajet();
+        is >> nb;
+        is >> depart;
+        is >> arrivee;
+        for (unsigned int i = 0; i < nb; i++)
+        {
+            is >> depart;
+            is >> arrivee;
+            is >> moyen;
+            const Trajet * sousTrajet = new const TrajetSimple(depart.c_str(), arrivee.c_str(), moyen.c_str());
+            tab->Add(sousTrajet);
+        }
+        const Trajet * trajet = new const TrajetCompose(tab);
+        this->AjouterTrajet(trajet);
+    }
+    else
+    {
+        is >> depart;
+        is >> arrivee;
+        is >> moyen;
+        const Trajet * trajet = new const TrajetSimple(depart.c_str(), arrivee.c_str(), moyen.c_str());
+        this->AjouterTrajet(trajet);
+    }
+}
+void Catalogue::Lire(string)
+{
+
+}
+void Catalogue::Lire(string, string)
+{
+
+}
+void Catalogue::Lire(int, int)
+{
+
 }
 
 
