@@ -7,6 +7,8 @@
 
 using namespace std;
 #include <iostream>
+#include <fstream>
+#include <typeinfo>
 
 #include "TrajetSimple.h"
 #include "TrajetCompose.h"
@@ -20,8 +22,14 @@ void test()
   Catalogue *c1 = new Catalogue();
 
   // Trajets Simples
-  const Trajet * pTS1 = new TrajetSimple((char *)"Lyon", (char *)"Paris", (char *)"Voiture");
-  //cout << (*pTS1);
+  const TrajetSimple * pTS1 = new TrajetSimple((char *)"Lyon", (char *)"Paris", (char *)"Voiture");
+
+  ofstream o("test.txt", ios::out | ios::app);
+  o << pTS1;
+  cout << typeid(*pTS1).name();
+  delete pTS1;
+
+  /*
   const Trajet * pTS2 = new TrajetSimple((char *)"Grenoble", (char *)"Lyon", (char *)"Voiture");
   const Trajet * pTS3 = new TrajetSimple((char *)"Grenoble", (char *)"Saint-Etienne", (char *)"Voiture");
   const Trajet * pTS4 = new TrajetSimple((char *)"Saint-Etienne", (char *)"Paris", (char *)"Voiture");
@@ -74,5 +82,5 @@ void test()
   c1->RechercherAvancee("Saint Egreve","Lyon");
   c1->RechercherAvancee((const char *)"Grenoble", (const char *)"Paris");
 
-  delete c1;
+  delete c1;*/
 }

@@ -34,7 +34,7 @@ int main()
 {
   test();
 
-  Catalogue *MonCatalogue = new Catalogue();
+  /*Catalogue *MonCatalogue = new Catalogue();
   unsigned int choix = 50;
   int nbTrajets;
   char * depart = new char[MAX];
@@ -129,6 +129,6 @@ int main()
   delete [] depart;
   delete [] arrivee;
   delete [] moyen;
-  delete MonCatalogue;
+  delete MonCatalogue;*/
   return 0;
 }
