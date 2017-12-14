@@ -25,9 +25,9 @@ public:
     virtual ~Trajet() {};
 
 //---------------------------------------------------- Fonctions publiques
-    virtual char * getDepart() const = 0;
-    virtual char * getArrivee() const = 0;
-    virtual char * getMoyen() const = 0;
+    virtual string getDepart() const = 0;
+    virtual string getArrivee() const = 0;
+    virtual string getMoyen() const = 0;
     // Contrat :
     //      Renvoie le départ ou l'arrivée du trajet appelant la méthode
 

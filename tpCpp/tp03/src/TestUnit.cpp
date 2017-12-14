@@ -22,7 +22,7 @@ void test()
   //Catalogue *c1 = new Catalogue();
 
   // Trajets Simples
-  const TrajetSimple * pTS1 = new TrajetSimple((char *)"Lyon", (char *)"Paris", (char *)"Voiture");
+  const TrajetSimple * pTS1 = new TrajetSimple("Lyon", "Paris", "Voiture");
 
   ofstream o("text.txt", ios::out | ios::app);
   pTS1->Ecrire(o);
@@ -31,13 +31,13 @@ void test()
   delete pTS1;
 
   /*
-  const Trajet * pTS2 = new TrajetSimple((char *)"Grenoble", (char *)"Lyon", (char *)"Voiture");
-  const Trajet * pTS3 = new TrajetSimple((char *)"Grenoble", (char *)"Saint-Etienne", (char *)"Voiture");
-  const Trajet * pTS4 = new TrajetSimple((char *)"Saint-Etienne", (char *)"Paris", (char *)"Voiture");
-  const Trajet * pTS5 = new TrajetSimple((char *)"Saint-Etienne", (char *)"Lyon", (char *)"Voiture");
-  const TrajetSimple* ts1 = new const TrajetSimple((char *)"Saint Egreve", (char *)"Grenoble", (char *)"Hypogriffe");
-  const TrajetSimple* ts2 = new const TrajetSimple((char *)"Grenoble", (char *)"Lyon", (char *)"Hypogriffe");
-  const TrajetSimple* ts3 = new const TrajetSimple((char *)"Paris", (char *)"Grenoble", (char *)"Vélo");
+  const Trajet * pTS2 = new TrajetSimple("Grenoble", "Lyon", "Voiture");
+  const Trajet * pTS3 = new TrajetSimple("Grenoble", "Saint-Etienne", "Voiture");
+  const Trajet * pTS4 = new TrajetSimple("Saint-Etienne", "Paris", "Voiture");
+  const Trajet * pTS5 = new TrajetSimple("Saint-Etienne", "Lyon", "Voiture");
+  const TrajetSimple* ts1 = new const TrajetSimple("Saint Egreve", "Grenoble", "Hypogriffe");
+  const TrajetSimple* ts2 = new const TrajetSimple("Grenoble", "Lyon", "Hypogriffe");
+  const TrajetSimple* ts3 = new const TrajetSimple("Paris", "Grenoble", "Vélo");
 
   c1->AjouterTrajet(pTS1);
   c1->AjouterTrajet(pTS2);
@@ -50,22 +50,22 @@ void test()
 
 
   // Trajets Composés
-  const Trajet * pTS6 = new TrajetSimple((char *)"Lyon", (char *)"Marseille", (char *)"Voiture");
-  const Trajet * pTS7 = new TrajetSimple((char *)"Marseille", (char *)"Paris", (char *)"Voiture");
+  const Trajet * pTS6 = new TrajetSimple("Lyon", "Marseille", "Voiture");
+  const Trajet * pTS7 = new TrajetSimple("Marseille", "Paris", "Voiture");
   TabTrajet * tt = new TabTrajet();
   tt->Add(pTS6);
   tt->Add(pTS7);
   const Trajet * pTC1 = new TrajetCompose(tt);
 
-  const TrajetSimple* tc1T1 = new const TrajetSimple((char *)"Grenoble", (char *)"Charavines", (char *)"Speed-Riding");
-  const TrajetSimple* tc1T2 = new const TrajetSimple((char *)"Charavines", (char *)"Lyon", (char *)"BlaBlaCar");
+  const TrajetSimple* tc1T1 = new const TrajetSimple("Grenoble", "Charavines", "Speed-Riding");
+  const TrajetSimple* tc1T2 = new const TrajetSimple("Charavines", "Lyon", "BlaBlaCar");
   TabTrajet* tc1Tab = new TabTrajet();
   tc1Tab->Add(tc1T1);
   tc1Tab->Add(tc1T2);
   const TrajetCompose * tc1 = new TrajetCompose(tc1Tab);
 
-  const TrajetSimple* tc2T1 = new const TrajetSimple((char *)"Saint Egreve", (char *)"Valfrejus", (char *)"BlaBlaCar");
-  const TrajetSimple* tc2T2 = new const TrajetSimple((char *)"Valfrejus", (char *)"Lyon", (char *)"Hypogriffe");
+  const TrajetSimple* tc2T1 = new const TrajetSimple("Saint Egreve", "Valfrejus", "BlaBlaCar");
+  const TrajetSimple* tc2T2 = new const TrajetSimple("Valfrejus", "Lyon", "Hypogriffe");
   TabTrajet* tc2Tab = new TabTrajet();
   tc2Tab->Add(tc2T1);
   tc2Tab->Add(tc2T2);

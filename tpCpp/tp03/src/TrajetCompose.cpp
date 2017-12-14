@@ -17,20 +17,20 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
-char * TrajetCompose::getDepart() const
+string TrajetCompose::getDepart() const
 {
     return t->Get(0)->getDepart();
 }
 
-char * TrajetCompose::getArrivee() const
+string TrajetCompose::getArrivee() const
 {
     unsigned int i = t->GetUtilise();
     return t->Get(i-1)->getArrivee();
 }
 
-char * TrajetCompose::getMoyen() const
+string TrajetCompose::getMoyen() const
 {
-    return (char*) "";
+    return "";
 }
 
 void TrajetCompose::Afficher() const
@@ -47,7 +47,7 @@ void TrajetCompose::Afficher() const
 
 void TrajetCompose::Ecrire(ofstream & os) const
 {
-    os << "TC" << this->t->GetUtilise() << endl;
+    os << "TC " << this->t->GetUtilise() << endl;
     os << this->getDepart() << endl;
     os << this->getArrivee() << endl;
     for (unsigned int i = 0; i < this->t->GetUtilise(); i++)

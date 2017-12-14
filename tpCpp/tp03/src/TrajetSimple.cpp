@@ -18,17 +18,17 @@ using namespace std;
 
 //----------------------------------------------------------------- PUBLIC
 //----------------------------------------------------- Méthodes publiques
-char * TrajetSimple::getDepart() const
+string TrajetSimple::getDepart() const
 {
   return depart;
 }
 
-char * TrajetSimple::getArrivee() const
+string TrajetSimple::getArrivee() const
 {
   return arrivee;
 }
 
-char * TrajetSimple::getMoyen() const
+string TrajetSimple::getMoyen() const
 {
   return moyen;
 }
@@ -47,21 +47,14 @@ void TrajetSimple::Ecrire(ofstream & os) const
 }
 
 //-------------------------------------------- Constructeurs - destructeur
-TrajetSimple::TrajetSimple (char *dep, char * arr, char * mt)
+TrajetSimple::TrajetSimple (string dep, string arr, string mt)
 {
 #if MAP
   cout << "Appel au constructeur de <TrajetSimple>" << endl;
 #endif
-  depart = new char[strlen(dep)+1];
-  arrivee = new char[strlen(arr)+1];
-  moyen = new char[strlen(mt)+1];
-  if (depart == nullptr || arrivee == nullptr || moyen == nullptr)
-  {
-    cerr << "Erreur lors de l'alloc des attributs du TrajetSimple" << endl;
-  }
-  strcpy(depart, dep);
-  strcpy(arrivee ,arr);
-  strcpy(moyen, mt);
+  depart = dep;
+  arrivee = arr;
+  moyen = mt;
 }
 
 TrajetSimple::~TrajetSimple ()
@@ -69,7 +62,4 @@ TrajetSimple::~TrajetSimple ()
 #if MAP
   cout << "Appel au destructeur de <TrajetSimple>" << endl;
 #endif
-  delete [] depart;
-  delete [] arrivee;
-  delete [] moyen;
 }

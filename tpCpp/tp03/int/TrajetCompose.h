@@ -26,9 +26,9 @@
 class TrajetCompose : public Trajet {
 public:
 //---------------------------------------------------- Fonctions publiques
-    virtual char * getDepart() const;
-    virtual char * getArrivee() const;
-    virtual char * getMoyen() const;
+    virtual string getDepart() const;
+    virtual string getArrivee() const;
+    virtual string getMoyen() const;
     // Contrat :
     //      Renvoie le départ ou l'arrivée du trajet appelant la méthode
 

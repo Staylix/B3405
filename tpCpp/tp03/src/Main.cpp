@@ -18,8 +18,6 @@ using namespace std;
 //----------TESTS
 #include "TestUnit.h"
 
-//----------Constante
-#define MAX 100
 
 static void print_option()
 {
@@ -49,11 +47,11 @@ int main()
   test();
 
   Catalogue *MonCatalogue = new Catalogue();
-  unsigned int choix = 50;
+  unsigned int choix = 69;
   int nbTrajets;
-  char * depart = new char[MAX];
-  char * arrivee = new char[MAX];
-  char * moyen = new char[MAX];
+  string depart;
+  string arrivee;
+  string moyen;
 
   cout << "Bonjour et bienvenu dans votre agence de voyage !" << endl;
   cout << "Que voulez vous faire ?" << endl << endl;
@@ -85,7 +83,7 @@ int main()
         for (int i = 0; i < nbTrajets; i++)
         {
             cin >> depart;
-            if (i > 0 && strcmp(depart, arrivee))
+            if (i > 0 && depart != arrivee)
             {
                 cout << "Votre trajet n'est pas valide..." << endl;
                 valide = false;
@@ -136,16 +134,18 @@ int main()
 
     if (choix == 6)
     {
+        cout << "\tVoulez vous sauvegarder :" << endl << endl;
         print_option_svg();
         cin >> choix;
         if (choix == 1)
         {
-            MonCatalogue->Ecrire();
+            MonCatalogue->Save();
         }
     }
 
     if (choix == 7)
     {
+        cout << "\tVoulez vous charger :" << endl << endl;
         print_option_svg();
         cin >> choix;
         if (choix == 1)
@@ -160,9 +160,6 @@ int main()
   }   // Fin du while
 
   cout << "Good bye and have a nice trip ! ;)" << endl;
-  delete [] depart;
-  delete [] arrivee;
-  delete [] moyen;
   delete MonCatalogue;
   return 0;
 }

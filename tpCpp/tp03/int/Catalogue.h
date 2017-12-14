@@ -41,12 +41,12 @@ public:
     //      T est un Trajet alloué dans le tas,
     //      non détruit avant la fin de vie du Catalogue
 
-    void RechercherSimple(const char * dep, const char *arr) const;
+    void RechercherSimple(const string & dep, const string & arr) const;
     // Contrat :
     //      Affiche les trajets (simples ou composés) dont le départ
     //      et l'arrivée correspondent aux paramètres
 
-    void RechercherAvancee(const char *dep, const char *arr) const;
+    void RechercherAvancee(const string & dep, const string & arr) const;
     // Contrat :
     //      Affiche les parcours réalisables à partir des trajets du
     //      catalogue, dont le départ et l'arrivée correspondent
@@ -101,7 +101,7 @@ protected:
     //      utilise est un int[] représentant le parcours à afficher,
     //      les valeurs correspondant à l'ordre d'affichage
 
-    void recure(int utilise[], int numeroTrajet, int trajetPrecedent , const char * arriveeFinale) const;
+    void recure(int utilise[], int numeroTrajet, int trajetPrecedent , const string & arriveeFinale) const;
     // Contrat :
     //      Fonction récursive qui permet de tester tous les parcours
     //      réalisables à partir des trajets du catalogue, partant du

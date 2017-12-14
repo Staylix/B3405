@@ -26,9 +26,9 @@ class TrajetSimple : public Trajet {
 public:
 
 //---------------------------------------------------- Fonctions publiques
-    virtual char * getDepart() const;
-    virtual char * getArrivee() const;
-    virtual char * getMoyen() const;
+    virtual string getDepart() const;
+    virtual string getArrivee() const;
+    virtual string getMoyen() const;
     // Contrat :
     //      Renvoie le départ ou l'arrivée du trajet appelant la méthode
 
@@ -38,16 +38,16 @@ public:
 
     virtual void Ecrire(ofstream & os) const;
 //--------------------------------------------- Constructor and Destructor
-    TrajetSimple(char * dep, char * arrivee, char * mt);
+    TrajetSimple(string dep, string arrivee, string mt);
     // Contrat :
     //      Construit un TrajetSimple à partir des arguments qui seront
     //      copiés en profondeur par le constructeur
     virtual ~TrajetSimple ();
 
 protected:
-    char * depart;
-    char * arrivee;
-    char * moyen;
+    string depart;
+    string arrivee;
+    string moyen;
 
 };
 #endif // TrajetSimple_H

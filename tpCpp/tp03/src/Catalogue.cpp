@@ -53,13 +53,13 @@ void Catalogue::AjouterTrajet(const Trajet * T)
   catalog->Add(T);
 }
 
-void Catalogue::RechercherSimple(const char * depart, const char * arrivee) const
+void Catalogue::RechercherSimple(const string & depart, const string & arrivee) const
 {
     cout << endl << "******************************************" << endl;
     cout << "Parcours directs disponibles pour faire " << depart << " --> " << arrivee << " :" << endl;
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
-        if ( !strcmp(depart, catalog->Get(i)->getDepart()) && !strcmp(arrivee, catalog->Get(i)->getArrivee()))
+        if ( depart == catalog->Get(i)->getDepart() && arrivee == catalog->Get(i)->getArrivee() )
         {
             catalog->Get(i)->Afficher();
         }
@@ -67,7 +67,7 @@ void Catalogue::RechercherSimple(const char * depart, const char * arrivee) cons
     cout << "******************************************" << endl << endl;
 }
 
-void Catalogue::RechercherAvancee(const char * depart, const char * arrivee) const
+void Catalogue::RechercherAvancee(const string & depart, const string & arrivee) const
 {
     cout << endl << "******************************************" << endl;
     cout << "Parcours disponibles pour faire " << depart << " --> " << arrivee << " :" << endl << endl;
@@ -78,7 +78,7 @@ void Catalogue::RechercherAvancee(const char * depart, const char * arrivee) con
             {
                 utilise[j] = 0;
             }
-        if ( !strcmp(depart, catalog->Get(i)->getDepart()) )
+        if ( depart == catalog->Get(i)->getDepart() )
         {
             utilise[i] = 1;
             this->recure(utilise, 2, i, arrivee);
@@ -115,34 +115,38 @@ void Catalogue::Lire()
 {
     string depart;
     string arrivee;
-    string moyen;
+    string moyen = "";
     ifstream is(fichier, ios::in);
     unsigned int nb;
     is >> moyen;
-    if (moyen == "TC")
+    while (!is.eof())
     {
-        TabTrajet * tab = new TabTrajet();
-        is >> nb;
-        is >> depart;
-        is >> arrivee;
-        for (unsigned int i = 0; i < nb; i++)
+        if (moyen == "TC")
+        {
+            TabTrajet * tab = new TabTrajet();
+            is >> nb;
+            is >> depart;
+            is >> arrivee;
+            for (unsigned int i = 0; i < nb; i++)
+            {
+                is >> depart;
+                is >> arrivee;
+                is >> moyen;
+                const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
+                tab->Add(sousTrajet);
+            }
+            const Trajet * trajet = new const TrajetCompose(tab);
+            this->AjouterTrajet(trajet);
+        }
+        else
         {
             is >> depart;
             is >> arrivee;
             is >> moyen;
-            const Trajet * sousTrajet = new const TrajetSimple(depart.c_str(), arrivee.c_str(), moyen.c_str());
-            tab->Add(sousTrajet);
+            const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
+            this->AjouterTrajet(trajet);
         }
-        const Trajet * trajet = new const TrajetCompose(tab);
-        this->AjouterTrajet(trajet);
-    }
-    else
-    {
-        is >> depart;
-        is >> arrivee;
         is >> moyen;
-        const Trajet * trajet = new const TrajetSimple(depart.c_str(), arrivee.c_str(), moyen.c_str());
-        this->AjouterTrajet(trajet);
     }
 }
 void Catalogue::Lire(string)
@@ -180,16 +184,16 @@ Catalogue::~Catalogue ( )
 //------------------------------------------------------------------ PRIVE
 //----------------------------------------------------- Méthodes protégées
 
-void Catalogue::recure(int utilise[], int numeroTrajet, int trajetPrecedent , const char * arriveeFinale) const
+void Catalogue::recure(int utilise[], int numeroTrajet, int trajetPrecedent , const string & arriveeFinale) const
 {
-    if (!strcmp(catalog->Get(trajetPrecedent)->getArrivee(), arriveeFinale))
+    if (catalog->Get(trajetPrecedent)->getArrivee() == arriveeFinale)
     {
         this->AfficherParcours(utilise);
         return;
     }
     for (unsigned int i = 0; i < catalog->GetUtilise(); i++)
     {
-        if ( !strcmp(catalog->Get(i)->getDepart(), catalog->Get(trajetPrecedent)->getArrivee()) && utilise[i] == 0)
+        if ( catalog->Get(i)->getDepart() == catalog->Get(trajetPrecedent)->getArrivee() && utilise[i] == 0 )
         {
             utilise[i] = numeroTrajet;
             this->recure(utilise, numeroTrajet + 1, i, arriveeFinale);
