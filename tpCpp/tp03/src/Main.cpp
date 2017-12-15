@@ -48,7 +48,9 @@ int main()
 
   Catalogue *MonCatalogue = new Catalogue();
   unsigned int choix = 69;
-  int nbTrajets;
+  unsigned int nbTrajets;
+  string choixS;
+  string nbTrajetsS;
   string depart;
   string arrivee;
   string moyen;
@@ -57,15 +59,17 @@ int main()
   cout << "Que voulez vous faire ?" << endl << endl;
   print_option();
 
-  cin >> choix;
+
+  getline(cin, choixS);
+  choix = stoi(choixS);
   while (choix != 0)
   {
     if (choix == 1)     // Ajout de trajet simple
     {
       cout << "Veulliez indiquer le départ, l'arrivée et le moyen de transport de votre trajet :" << endl;
-      cin >> depart;
-      cin >> arrivee;
-      cin >> moyen;
+      getline(cin, depart);
+      getline(cin, arrivee);
+      getline(cin, moyen);
       const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
       MonCatalogue->AjouterTrajet(trajet);
       cout << "Trajet ajouté !" << endl;
@@ -74,23 +78,24 @@ int main()
     if (choix == 2)     // Ajout de trajet composé
     {
       cout << "Combien de trajets simples composent votre trajet ?" << endl;
-      cin >> nbTrajets;
+      getline(cin, nbTrajetsS);
+      nbTrajets = stoi(nbTrajetsS);
       if (nbTrajets > 1)
       {
         TabTrajet * tab = new TabTrajet();
         cout << "Veulliez indiquer le départ, l'arrivée et le moyen de transport de chaque étape :" << endl;
         bool valide = true;
-        for (int i = 0; i < nbTrajets; i++)
+        for (unsigned int i = 0; i < nbTrajets; i++)
         {
-            cin >> depart;
+            getline(cin, depart);
             if (i > 0 && depart != arrivee)
             {
                 cout << "Votre trajet n'est pas valide..." << endl;
                 valide = false;
                 i = nbTrajets; // On arrête de lire cin
             }
-            cin >> arrivee;
-            cin >> moyen;
+            getline(cin, arrivee);
+            getline(cin, moyen);
             const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
             tab->Add(sousTrajet);
         }
@@ -119,16 +124,16 @@ int main()
     if (choix == 4)     // Recherche simple
     {
       cout << "Veulliez indiquer le départ et l'arrivée de votre voyage :" << endl;
-      cin >> depart;
-      cin >> arrivee;
+      getline(cin, depart);
+      getline(cin, arrivee);
       MonCatalogue->RechercherSimple(depart, arrivee);
     }
 
     if (choix == 5)     // Recherche avancée
     {
         cout << "Veulliez indiquer le départ et l'arrivée de votre voyage :" << endl;
-        cin >> depart;
-        cin >> arrivee;
+        getline(cin, depart);
+        getline(cin, arrivee);
         MonCatalogue->RechercherAvancee(depart, arrivee);
     }
 
@@ -136,7 +141,8 @@ int main()
     {
         cout << "\tVoulez vous sauvegarder :" << endl << endl;
         print_option_svg();
-        cin >> choix;
+        getline(cin, choixS);
+        choix = stoi(choixS);
         if (choix == 1)
         {
             MonCatalogue->Save();
@@ -147,7 +153,8 @@ int main()
     {
         cout << "\tVoulez vous charger :" << endl << endl;
         print_option_svg();
-        cin >> choix;
+        getline(cin, choixS);
+        choix = stoi(choixS);
         if (choix == 1)
         {
             MonCatalogue->Lire();
@@ -156,7 +163,8 @@ int main()
 
     cout << endl << "Maintenant, que voulez vous faire ?" << endl << endl;
     print_option();
-    cin >> choix;
+    getline(cin, choixS);
+    choix = stoi(choixS);
   }   // Fin du while
 
   cout << "Good bye and have a nice trip ! ;)" << endl;
