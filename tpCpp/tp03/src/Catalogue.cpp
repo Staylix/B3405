@@ -115,23 +115,25 @@ void Catalogue::Lire()
 {
     string depart;
     string arrivee;
-    string moyen = "";
+    string moyen;
     ifstream is(fichier, ios::in);
     unsigned int nb;
-    is >> moyen;
+    string nbS;
+    getline(is, moyen);
     while (!is.eof())
     {
         if (moyen == "TC")
         {
             TabTrajet * tab = new TabTrajet();
-            is >> nb;
-            is >> depart;
-            is >> arrivee;
+            getline(is, nbS);
+            nb = stoi(nbS);
+            getline(is, depart);
+            getline(is, arrivee);
             for (unsigned int i = 0; i < nb; i++)
             {
-                is >> depart;
-                is >> arrivee;
-                is >> moyen;
+                getline(is, depart);
+                getline(is, arrivee);
+                getline(is, moyen);
                 const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
                 tab->Add(sousTrajet);
             }
@@ -140,13 +142,13 @@ void Catalogue::Lire()
         }
         else
         {
-            is >> depart;
-            is >> arrivee;
-            is >> moyen;
+            getline(is, depart);
+            getline(is, arrivee);
+            getline(is, moyen);
             const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
             this->AjouterTrajet(trajet);
         }
-        is >> moyen;
+        getline(is, moyen);
     }
 }
 void Catalogue::Lire(string)
