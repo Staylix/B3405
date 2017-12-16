@@ -34,6 +34,7 @@ public:
     virtual void Afficher() const = 0;
 
     virtual void Ecrire(ofstream & os) const = 0;
+    virtual void Ecrire(ofstream & os, string type) const = 0;
 
     // Contrat :
     //      Affiche le trajet appelant la méthode

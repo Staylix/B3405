@@ -59,6 +59,23 @@ void TrajetCompose::Ecrire(ofstream & os) const
     }
     return;
 }
+void TrajetCompose::Ecrire(ofstream & os, string type) const
+{
+    if (type == "TC")
+    {
+        os << "TC " << endl;
+        os << this->t->GetUtilise() << endl;
+        os << this->getDepart() << endl;
+        os << this->getArrivee() << endl;
+        for (unsigned int i = 0; i < this->t->GetUtilise(); i++)
+        {
+            os << this->t->Get(i)->getDepart() << endl;
+            os << this->t->Get(i)->getArrivee() << endl;
+            os << this->t->Get(i)->getMoyen() << endl;
+        }
+    }
+    return;
+}
 
 
 //-------------------------------------------- Constructeurs - destructeur

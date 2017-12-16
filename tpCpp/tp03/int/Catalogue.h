@@ -52,10 +52,11 @@ public:
     //      catalogue, dont le départ et l'arrivée correspondent
     //      aux paramètres
 
-    void Save() const;
     void Save(string) const;
     void Save(string, string) const;
-    void Save(int, int) const;
+    void Save(string, string, unsigned int) const;
+    void Save(string, string, string) const;
+    void Save(string, unsigned int, unsigned int) const;
     // Contrat :
     //      Cette méthode utilise un flux pour ecrire dans
     //      un fichier les trajets contenus
@@ -64,10 +65,11 @@ public:
     //      Le choix des paramètres dépend du type de sauvegarde
     //      désiré
 
-    void Lire();
     void Lire(string);
     void Lire(string, string);
-    void Lire(int, int);
+    void Lire(string, string, unsigned int);
+    void Lire(string, string, string);
+    void Lire(string, unsigned int, unsigned int);
     // Contrat :
     //      Cette méthode utilise un flux pour lire dans
     //      un fichier les trajets et les ajouter

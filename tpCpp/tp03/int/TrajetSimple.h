@@ -37,6 +37,7 @@ public:
     //      Affiche le trajet appelant la méthode
 
     virtual void Ecrire(ofstream & os) const;
+    virtual void Ecrire(ofstream & os, string type) const;
 //--------------------------------------------- Constructor and Destructor
     TrajetSimple(string dep, string arrivee, string mt);
     // Contrat :

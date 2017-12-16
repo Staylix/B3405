@@ -40,10 +40,20 @@ void TrajetSimple::Afficher() const
 
 void TrajetSimple::Ecrire(ofstream & os) const
 {
-  os << "TS" << endl;
-  os << depart << endl;
-  os << arrivee << endl;
-  os << moyen << endl;
+    os << "TS" << endl;
+    os << depart << endl;
+    os << arrivee << endl;
+    os << moyen << endl;
+}
+void TrajetSimple::Ecrire(ofstream & os, string type) const
+{
+    if (type == "TS")
+    {
+        os << "TS" << endl;
+        os << depart << endl;
+        os << arrivee << endl;
+        os << moyen << endl;
+    }
 }
 
 //-------------------------------------------- Constructeurs - destructeur
