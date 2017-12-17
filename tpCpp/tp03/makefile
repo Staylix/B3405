@@ -1,8 +1,8 @@
 #--------------- SET DIR AND TARGET NAME HERE -------
-DIRSRC = src/
-DIROBJ = obj/
-DIRBIN = bin/
-DIRHEADERS = int/
+DIRSRC = ./
+DIROBJ = ./
+DIRBIN = ./
+DIRHEADERS = ./
 
 TARGET = a.out
 
