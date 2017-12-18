@@ -1,11 +1,9 @@
-3
-
 TS
 Lyon
 Bordeaux
 Train
-
-TC 2
+TC
+2
 Lyon
 Paris
 Lyon
@@ -14,7 +12,6 @@ Bateau
 Marseille
 Paris
 Avion
-
 TS
 Lyon
 Paris

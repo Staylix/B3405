@@ -257,6 +257,7 @@ int main()
 
     else if (choix == 8)
     {
+        cout << "Le fichier actuel est : " << fichier << endl;
         cout << "Entrez le nom complet du fichier :" << endl;
         getline(cin, fichier);
     /*    ofstream tmpFlux(fichier, ios::out);
