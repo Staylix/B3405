@@ -44,7 +44,7 @@ static void print_option_svg()
   cout << "\t\t7 - Une selection de trajets" << endl;
 }
 
-unsigned int readChoice( int min, int max )
+unsigned int readChoice( int min, int max )     // Lit un chiffre uniquement, compris entre min et max
 {
     string choiceS;
     unsigned int choice;
@@ -64,7 +64,7 @@ unsigned int readChoice( int min, int max )
     choice = stoi(choiceS);
     return choice;
 }
-unsigned int readChoice()
+unsigned int readChoice()       // Lit un nombre uniquement
 {
     string choiceS;
     unsigned int choice;
@@ -96,7 +96,7 @@ int main()
 
   Catalogue *MonCatalogue = new Catalogue();
 
-  string fichier = "demo.txt";
+  string fichier = "demo.txt";      // Fichier de sauvegarde courant
 
   unsigned int choix;
   unsigned int nbTrajets;
@@ -196,7 +196,7 @@ int main()
         MonCatalogue->RechercherAvancee(depart, arrivee);
     }
 
-    else if (choix == 6)
+    else if (choix == 6)    // Sauvegarde
     {
         cout << "\tVoulez vous sauvegarder :" << endl << endl;
         print_option_svg();
@@ -247,7 +247,7 @@ int main()
         }
     }
 
-    else if (choix == 7)
+    else if (choix == 7)    // Chargement
     {
         cout << "\tVoulez vous charger :" << endl << endl;
         print_option_svg();
@@ -301,18 +301,13 @@ int main()
         }
     }
 
-    else if (choix == 8)
+    else if (choix == 8)    // Choix du fichier
+    //  Si le fichier choisi n'existe pas, le chargement est impossible
+    //  et le fichier est créé lors d'une sauvegarde
     {
-        cout << "Le fichier actuel est : " << fichier << endl;
+        cout << "Le fichier actuel est : " << fichier << endl;  // Fichier par défaut : demo.txt
         cout << "Entrez le nom complet du fichier :" << endl;
         getline(cin, fichier);
-    /*    ofstream tmpFlux(fichier, ios::out);
-        if (!tmpFlux)
-        {
-            cout << "Ce fichier n'existe pas ..." << endl;
-            fichier = "demo.txt";
-        }
-        tmpFlux.close();*/
     }
 
     cout << endl << "Maintenant, que voulez vous faire ?" << endl << endl;
