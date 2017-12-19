@@ -7,6 +7,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <limits>
 using namespace std;
 
 #include "TrajetSimple.h"
@@ -43,6 +44,27 @@ static void print_option_svg()
   cout << "\t\t7 - Une selection de trajets" << endl;
 }
 
+unsigned int readChoice( int min, int max )
+{
+    string choiceS;
+    unsigned int choice;
+    bool ok = false;
+    while (!ok)
+    {
+        getline(cin, choiceS);
+        if ( choiceS.size() == 1 && int(choiceS[0]) >= 48 + min && int(choiceS[0]) <= 48 + max )
+        {
+            ok = true;
+        }
+        else
+        {
+            cout << "Saisie incorrecte, réessayez :" << endl;
+        }
+    }
+    choice = stoi(choiceS);
+    return choice;
+}
+
 
 int main()
 {
@@ -52,9 +74,8 @@ int main()
 
   string fichier = "demo.txt";
 
-  unsigned int choix = 69;
+  unsigned int choix;
   unsigned int nbTrajets;
-  string choixS;
   string nbTrajetsS;
   string depart;
   string arrivee;
@@ -67,8 +88,7 @@ int main()
   print_option();
 
 
-  getline(cin, choixS);
-  choix = stoi(choixS);
+  choix = readChoice(0, 8);
   while (choix != 0)
   {
     if (choix == 1)     // Ajout de trajet simple
@@ -148,8 +168,7 @@ int main()
     {
         cout << "\tVoulez vous sauvegarder :" << endl << endl;
         print_option_svg();
-        getline(cin, choixS);
-        choix = stoi(choixS);
+        choix = readChoice(1, 7);
         if (choix == 1)
         {
             MonCatalogue->Save(fichier);
@@ -202,8 +221,7 @@ int main()
     {
         cout << "\tVoulez vous charger :" << endl << endl;
         print_option_svg();
-        getline(cin, choixS);
-        choix = stoi(choixS);
+        choix = readChoice(1, 7);
         if (choix == 1)
         {
             MonCatalogue->Lire(fichier);
@@ -271,8 +289,7 @@ int main()
 
     cout << endl << "Maintenant, que voulez vous faire ?" << endl << endl;
     print_option();
-    getline(cin, choixS);
-    choix = stoi(choixS);
+    choix = readChoice(0, 8);
   }   // Fin du while
 
   cout << "Good bye and have a nice trip ! ;)" << endl;

@@ -47,7 +47,7 @@ void TrajetCompose::Afficher() const
 
 void TrajetCompose::Ecrire(ofstream & os) const
 {
-    os << "TC " << endl;
+    os << "TC" << endl;
     os << this->t->GetUtilise() << endl;
     os << this->getDepart() << endl;
     os << this->getArrivee() << endl;
@@ -63,7 +63,7 @@ void TrajetCompose::Ecrire(ofstream & os, string type) const
 {
     if (type == "TC")
     {
-        os << "TC " << endl;
+        os << "TC" << endl;
         os << this->t->GetUtilise() << endl;
         os << this->getDepart() << endl;
         os << this->getArrivee() << endl;

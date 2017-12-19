@@ -11,7 +11,6 @@
 //-------------------------------------------------------- Include système
 using namespace std;
 #include <iostream>
-#include <cstring>
 
 //------------------------------------------------------ Include personnel
 #include "Catalogue.h"
@@ -147,256 +146,293 @@ void Catalogue::Save(string fichier, unsigned int first, unsigned int last) cons
 
 void Catalogue::Lire(string fichier)
 {
-    string depart;
-    string arrivee;
-    string moyen;
     ifstream is(fichier, ios::in);
-    unsigned int nb;
-    string nbS;
-    getline(is, moyen);
-    while (!is.eof())
+    if (is)
     {
-        if (moyen == "TC")
+        string depart;
+        string arrivee;
+        string moyen;
+        unsigned int nb;
+        string nbS;
+        getline(is, moyen);
+        while (!is.eof())
         {
-            TabTrajet * tab = new TabTrajet();
-            getline(is, nbS);
-            nb = stoi(nbS);
-            getline(is, depart);
-            getline(is, arrivee);
-            for (unsigned int i = 0; i < nb; i++)
+            if (moyen == "TC")
+            {
+                TabTrajet * tab = new TabTrajet();
+                getline(is, nbS);
+                nb = stoi(nbS);
+                getline(is, depart);
+                getline(is, arrivee);
+                for (unsigned int i = 0; i < nb; i++)
+                {
+                    getline(is, depart);
+                    getline(is, arrivee);
+                    getline(is, moyen);
+                    const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
+                    tab->Add(sousTrajet);
+                }
+                const Trajet * trajet = new const TrajetCompose(tab);
+                this->AjouterTrajet(trajet);
+            }
+            else
             {
                 getline(is, depart);
                 getline(is, arrivee);
                 getline(is, moyen);
-                const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
-                tab->Add(sousTrajet);
+                const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
+                this->AjouterTrajet(trajet);
             }
-            const Trajet * trajet = new const TrajetCompose(tab);
-            this->AjouterTrajet(trajet);
-        }
-        else
-        {
-            getline(is, depart);
-            getline(is, arrivee);
             getline(is, moyen);
-            const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
-            this->AjouterTrajet(trajet);
         }
-        getline(is, moyen);
+    }
+    else
+    {
+        cout << "Ce fichier n'existe pas..." << endl;
     }
 }
 void Catalogue::Lire(string fichier, string type)
 {
-    string depart;
-    string arrivee;
-    string moyen;
     ifstream is(fichier, ios::in);
-    unsigned int nb;
-    string nbS;
-    getline(is, moyen);
-    while (!is.eof())
+    if (is)
     {
-        if (moyen == "TC")
+        string depart;
+        string arrivee;
+        string moyen;
+        unsigned int nb;
+        string nbS;
+        getline(is, moyen);
+        while (!is.eof())
         {
-            TabTrajet * tab = new TabTrajet();
-            getline(is, nbS);
-            nb = stoi(nbS);
-            getline(is, depart);
-            getline(is, arrivee);
-            for (unsigned int i = 0; i < nb; i++)
+            if (moyen == "TC")
+            {
+                TabTrajet * tab = new TabTrajet();
+                getline(is, nbS);
+                nb = stoi(nbS);
+                getline(is, depart);
+                getline(is, arrivee);
+                for (unsigned int i = 0; i < nb; i++)
+                {
+                    getline(is, depart);
+                    getline(is, arrivee);
+                    getline(is, moyen);
+                    const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
+                    tab->Add(sousTrajet);
+                }
+                const Trajet * trajet = new const TrajetCompose(tab);
+                if (type == "TC")
+                {
+                    this->AjouterTrajet(trajet);
+                }
+                else delete trajet;
+            }
+            else
             {
                 getline(is, depart);
                 getline(is, arrivee);
                 getline(is, moyen);
-                const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
-                tab->Add(sousTrajet);
+                const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
+                if (type == "TS")
+                {
+                    this->AjouterTrajet(trajet);
+                }
+                else delete trajet;
             }
-            const Trajet * trajet = new const TrajetCompose(tab);
-            if (type == "TC")
-            {
-                this->AjouterTrajet(trajet);
-            }
-            else delete trajet;
-        }
-        else
-        {
-            getline(is, depart);
-            getline(is, arrivee);
             getline(is, moyen);
-            const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
-            if (type == "TS")
-            {
-                this->AjouterTrajet(trajet);
-            }
-            else delete trajet;
         }
-        getline(is, moyen);
+    }
+    else
+    {
+        cout << "Ce fichier n'existe pas..." << endl;
     }
 }
 void Catalogue::Lire(string fichier, string ville, unsigned int DouA)
 {
-    string depart;
-    string arrivee;
-    string moyen;
     ifstream is(fichier, ios::in);
-    unsigned int nb;
-    string nbS;
-    getline(is, moyen);
-    while (!is.eof())
-        {
-        if (moyen == "TC")
-        {
-            getline(is, nbS);
-            nb = stoi(nbS);
-            getline(is, depart);
-            getline(is, arrivee);
-            if ((DouA == 0 && depart == ville) || (DouA == 1 && arrivee == ville))
-            {
-                TabTrajet * tab = new TabTrajet();
-                for (unsigned int i = 0; i < nb; i++)
-                {
-                    getline(is, depart);
-                    getline(is, arrivee);
-                    getline(is, moyen);
-                    const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
-                    tab->Add(sousTrajet);
-                }
-                const Trajet * trajet = new const TrajetCompose(tab);
-                this->AjouterTrajet(trajet);
-            }
-            else
-            {
-                for (unsigned int i = 0; i < nb; i++)
-                {
-                    getline(is, depart);
-                    getline(is, arrivee);
-                    getline(is, moyen);
-                }
-            }
-        }
-        else
-        {
-            getline(is, depart);
-            getline(is, arrivee);
-            getline(is, moyen);
-            if ((DouA == 0 && depart == ville) || (DouA == 1 && arrivee == ville))
-            {
-                const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
-                this->AjouterTrajet(trajet);
-            }
-        }
-        getline(is, moyen);
-    }
-}
-void Catalogue::Lire(string fichier, string dep, string arr)
-{
-    string depart;
-    string arrivee;
-    string moyen;
-    ifstream is(fichier, ios::in);
-    unsigned int nb;
-    string nbS;
-    getline(is, moyen);
-    while (!is.eof())
-        {
-        if (moyen == "TC")
-        {
-            getline(is, nbS);
-            nb = stoi(nbS);
-            getline(is, depart);
-            getline(is, arrivee);
-            if (depart == dep && arrivee == arr)
-            {
-                TabTrajet * tab = new TabTrajet();
-                for (unsigned int i = 0; i < nb; i++)
-                {
-                    getline(is, depart);
-                    getline(is, arrivee);
-                    getline(is, moyen);
-                    const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
-                    tab->Add(sousTrajet);
-                }
-                const Trajet * trajet = new const TrajetCompose(tab);
-                this->AjouterTrajet(trajet);
-            }
-            else
-            {
-                for (unsigned int i = 0; i < nb; i++)
-                {
-                    getline(is, depart);
-                    getline(is, arrivee);
-                    getline(is, moyen);
-                }
-            }
-        }
-        else
-        {
-            getline(is, depart);
-            getline(is, arrivee);
-            getline(is, moyen);
-            if (depart == dep && arrivee == arr)
-            {
-                const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
-                this->AjouterTrajet(trajet);
-            }
-        }
-        getline(is, moyen);
-    }
-}
-void Catalogue::Lire(string fichier, unsigned int first, unsigned int last)
-{
-    unsigned int count = 0;
-    string depart;
-    string arrivee;
-    string moyen;
-    ifstream is(fichier, ios::in);
-    unsigned int nb;
-    string nbS;
-    getline(is, moyen);
-    while (!is.eof())
+    if (is)
     {
-        count++;
-        if (moyen == "TC")
-        {
-            TabTrajet * tab = new TabTrajet();
-            getline(is, nbS);
-            nb = stoi(nbS);
-            getline(is, depart);
-            getline(is, arrivee);
-            for (unsigned int i = 0; i < nb; i++)
+        string depart;
+        string arrivee;
+        string moyen;
+        ifstream is(fichier, ios::in);
+        unsigned int nb;
+        string nbS;
+        getline(is, moyen);
+        while (!is.eof())
+            {
+            if (moyen == "TC")
+            {
+                getline(is, nbS);
+                nb = stoi(nbS);
+                getline(is, depart);
+                getline(is, arrivee);
+                if ((DouA == 0 && depart == ville) || (DouA == 1 && arrivee == ville))
+                {
+                    TabTrajet * tab = new TabTrajet();
+                    for (unsigned int i = 0; i < nb; i++)
+                    {
+                        getline(is, depart);
+                        getline(is, arrivee);
+                        getline(is, moyen);
+                        const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
+                        tab->Add(sousTrajet);
+                    }
+                    const Trajet * trajet = new const TrajetCompose(tab);
+                    this->AjouterTrajet(trajet);
+                }
+                else
+                {
+                    for (unsigned int i = 0; i < nb; i++)
+                    {
+                        getline(is, depart);
+                        getline(is, arrivee);
+                        getline(is, moyen);
+                    }
+                }
+            }
+            else
             {
                 getline(is, depart);
                 getline(is, arrivee);
                 getline(is, moyen);
-                const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
-                tab->Add(sousTrajet);
+                if ((DouA == 0 && depart == ville) || (DouA == 1 && arrivee == ville))
+                {
+                    const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
+                    this->AjouterTrajet(trajet);
+                }
             }
-            const Trajet * trajet = new const TrajetCompose(tab);
-            if (count >= first && count <= last)
-            {
-                this->AjouterTrajet(trajet);
-            }
-            else
-            {
-                delete trajet;
-            }
-        }
-        else
-        {
-            getline(is, depart);
-            getline(is, arrivee);
             getline(is, moyen);
-            const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
-            if (count >= first && count <= last)
+        }
+    }
+    else
+    {
+        cout << "Ce fichier n'existe pas..." << endl;
+    }
+}
+void Catalogue::Lire(string fichier, string dep, string arr)
+{
+    ifstream is(fichier, ios::in);
+    if (is)
+    {
+        string depart;
+        string arrivee;
+        string moyen;
+        unsigned int nb;
+        string nbS;
+        getline(is, moyen);
+        while (!is.eof())
             {
-                this->AjouterTrajet(trajet);
+            if (moyen == "TC")
+            {
+                getline(is, nbS);
+                nb = stoi(nbS);
+                getline(is, depart);
+                getline(is, arrivee);
+                if (depart == dep && arrivee == arr)
+                {
+                    TabTrajet * tab = new TabTrajet();
+                    for (unsigned int i = 0; i < nb; i++)
+                    {
+                        getline(is, depart);
+                        getline(is, arrivee);
+                        getline(is, moyen);
+                        const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
+                        tab->Add(sousTrajet);
+                    }
+                    const Trajet * trajet = new const TrajetCompose(tab);
+                    this->AjouterTrajet(trajet);
+                }
+                else
+                {
+                    for (unsigned int i = 0; i < nb; i++)
+                    {
+                        getline(is, depart);
+                        getline(is, arrivee);
+                        getline(is, moyen);
+                    }
+                }
             }
             else
             {
-                delete trajet;
+                getline(is, depart);
+                getline(is, arrivee);
+                getline(is, moyen);
+                if (depart == dep && arrivee == arr)
+                {
+                    const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
+                    this->AjouterTrajet(trajet);
+                }
             }
+            getline(is, moyen);
         }
+    }
+    else
+    {
+        cout << "Ce fichier n'existe pas..." << endl;
+    }
+}
+void Catalogue::Lire(string fichier, unsigned int first, unsigned int last)
+{
+    ifstream is(fichier, ios::in);
+    if (is)
+    {
+        unsigned int count = 0;
+        string depart;
+        string arrivee;
+        string moyen;
+
+        unsigned int nb;
+        string nbS;
         getline(is, moyen);
+        while (!is.eof())
+        {
+            count++;
+            if (moyen == "TC")
+            {
+                TabTrajet * tab = new TabTrajet();
+                getline(is, nbS);
+                nb = stoi(nbS);
+                getline(is, depart);
+                getline(is, arrivee);
+                for (unsigned int i = 0; i < nb; i++)
+                {
+                    getline(is, depart);
+                    getline(is, arrivee);
+                    getline(is, moyen);
+                    const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
+                    tab->Add(sousTrajet);
+                }
+                const Trajet * trajet = new const TrajetCompose(tab);
+                if (count >= first && count <= last)
+                {
+                    this->AjouterTrajet(trajet);
+                }
+                else
+                {
+                    delete trajet;
+                }
+            }
+            else
+            {
+                getline(is, depart);
+                getline(is, arrivee);
+                getline(is, moyen);
+                const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
+                if (count >= first && count <= last)
+                {
+                    this->AjouterTrajet(trajet);
+                }
+                else
+                {
+                    delete trajet;
+                }
+            }
+            getline(is, moyen);
+        }
+    }
+    else
+    {
+        cout << "Ce fichier n'existe pas..." << endl;
     }
 }
 
@@ -465,3 +501,14 @@ int Catalogue::max(int utilise[]) const // On sait que utilise est de la taille 
     }
     return maxi;
 }
+
+/*
+string upper(string str)
+{
+    string newstr = str;
+	for(char& c : str)
+	{
+		if (c >= 97 && c <= 122)
+			c = c - 32;
+	}
+}*/
