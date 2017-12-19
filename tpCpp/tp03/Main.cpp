@@ -64,6 +64,30 @@ unsigned int readChoice( int min, int max )
     choice = stoi(choiceS);
     return choice;
 }
+unsigned int readChoice()
+{
+    string choiceS;
+    unsigned int choice;
+    bool ok = false;
+    while (!ok)
+    {
+        ok = true;
+        getline(cin, choiceS);
+        for ( unsigned int i = 0; i < choiceS.size(); i ++ )
+        {
+            if ( !(int(choiceS[i]) >= 48 && int(choiceS[i]) <= 57) )
+            {
+                ok = false;
+            }
+        }
+        if (!ok)
+        {
+            cout << "Saisie incorrecte, réessayez :" << endl;
+        }
+    }
+    choice = stoi(choiceS);
+    return choice;
+}
 
 
 int main()
@@ -76,7 +100,6 @@ int main()
 
   unsigned int choix;
   unsigned int nbTrajets;
-  string nbTrajetsS;
   string depart;
   string arrivee;
   string moyen;
@@ -93,9 +116,12 @@ int main()
   {
     if (choix == 1)     // Ajout de trajet simple
     {
-      cout << "Veulliez indiquer le départ, l'arrivée et le moyen de transport de votre trajet :" << endl;
+      cout << "Veulliez saisir votre trajet :" << endl;
+      cout << "Départ : ";
       getline(cin, depart);
+      cout << "Arrivée : ";
       getline(cin, arrivee);
+      cout << "Moyen de transport : ";
       getline(cin, moyen);
       const Trajet * trajet = new const TrajetSimple(depart, arrivee, moyen);
       MonCatalogue->AjouterTrajet(trajet);
@@ -105,26 +131,32 @@ int main()
     else if (choix == 2)     // Ajout de trajet composé
     {
       cout << "Combien de trajets simples composent votre trajet ?" << endl;
-      getline(cin, nbTrajetsS);
-      nbTrajets = stoi(nbTrajetsS);
+      nbTrajets = readChoice();
       if (nbTrajets > 1)
       {
         TabTrajet * tab = new TabTrajet();
-        cout << "Veulliez indiquer le départ, l'arrivée et le moyen de transport de chaque étape :" << endl;
+        cout << "Veulliez saisir vos trajets :" << endl;
         bool valide = true;
         for (unsigned int i = 0; i < nbTrajets; i++)
         {
+            cout << "Trajet n°" << i+1 << " :" << endl;
+            cout << "\tDépart : ";
             getline(cin, depart);
             if (i > 0 && depart != arrivee)
             {
                 cout << "Votre trajet n'est pas valide..." << endl;
                 valide = false;
-                i = nbTrajets; // On arrête de lire cin
+                i = nbTrajets;      // On arrête de lire cin
             }
-            getline(cin, arrivee);
-            getline(cin, moyen);
-            const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
-            tab->Add(sousTrajet);
+            else
+            {
+                cout << "\tArrivée : ";
+                getline(cin, arrivee);
+                cout << "\tMoyen de transport : ";
+                getline(cin, moyen);
+                const Trajet * sousTrajet = new const TrajetSimple(depart, arrivee, moyen);
+                tab->Add(sousTrajet);
+            }
         }
         const Trajet * trajet = new const TrajetCompose(tab);
         if (valide)
@@ -207,12 +239,10 @@ int main()
             MonCatalogue->Afficher();
             cout << "Lesquels voulez-vous sauvegarder ?" << endl;
             cout << "Du" << endl;
-            getline(cin, nbTrajetsS);
-            nbTrajets = stoi(nbTrajetsS);
+            nbTrajets = readChoice();
             unsigned int tmp = nbTrajets;
             cout << "Au" << endl;
-            getline(cin, nbTrajetsS);
-            nbTrajets = stoi(nbTrajetsS);
+            nbTrajets = readChoice();
             MonCatalogue->Save(fichier, tmp, nbTrajets);
         }
     }
@@ -263,12 +293,10 @@ int main()
             delete tmpCatalogue;
             cout << "Lesquels voulez-vous charger ?" << endl;
             cout << "Du" << endl;
-            getline(cin, nbTrajetsS);
-            nbTrajets = stoi(nbTrajetsS);
+            nbTrajets = readChoice();
             unsigned int tmp = nbTrajets;
             cout << "Au" << endl;
-            getline(cin, nbTrajetsS);
-            nbTrajets = stoi(nbTrajetsS);
+            nbTrajets = readChoice();
             MonCatalogue->Lire(fichier, tmp, nbTrajets);
         }
     }

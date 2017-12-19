@@ -38,6 +38,11 @@ public:
 
     virtual void Ecrire(ofstream & os) const;
     virtual void Ecrire(ofstream & os, string type) const;
+    // Contrat :
+    //      Ecrit le trajet appelant la méthode dans le fichier manipulé
+    //      par le flux en paramètre
+    //      La méthode surchargée écrit dans le fichier seulement si
+    //      string type == "TC"
 
 //--------------------------------------------- Constructor and Destructor
     TrajetCompose(TabTrajet * t);

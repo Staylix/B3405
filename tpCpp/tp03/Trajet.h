@@ -32,12 +32,17 @@ public:
     //      Renvoie le départ ou l'arrivée du trajet appelant la méthode
 
     virtual void Afficher() const = 0;
+    // Contrat :
+    //      Affiche le trajet appelant la méthode
 
     virtual void Ecrire(ofstream & os) const = 0;
     virtual void Ecrire(ofstream & os, string type) const = 0;
-
     // Contrat :
-    //      Affiche le trajet appelant la méthode
+    //      Ecrit le trajet appelant la méthode dans le fichier manipulé
+    //      par le flux en paramètre
+    //      La méthode surchargée écrit dans le fichier seulement si
+    //      le trajet est du type spécifié par type
+
 
 };
 #endif // Trajet_H
